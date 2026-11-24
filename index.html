@@ -320,6 +320,231 @@
   }
   .logout .ic { width: 30px; height: 30px; stroke-width: 2; margin-top: -3px; }
 
+  /* ----- Auction mode (فورة مزاد) ----- */
+  .au-cat { margin-top: 30px; padding: 22px 18px 16px; text-align: center; position: relative; }
+  .au-cat .qbadge { top: -26px; left: -10px; }
+  .au-cat small { display: block; font-size: 16px; font-weight: 700; color: #5b6880; }
+  .au-cat b { display: block; font-size: 30px; font-weight: 800; line-height: 1.3; padding-top: 2px; }
+  .au-cat .hidden-q {
+    margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 0; height: 30px;
+    border-radius: 15px; background: #ece0d2; font-size: 14px; font-weight: 700; color: #5b6880;
+  }
+  .au-cat .hidden-q .ic { width: 16px; height: 16px; margin-top: -3px; }
+  .au-meta { display: flex; justify-content: space-between; align-items: center; direction: rtl; margin: 16px 6px 6px; }
+  .au-meta .flabel { margin: 0; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 3px 12px 0; border-radius: 16px;
+    background: var(--card); box-shadow: var(--shadow); font-size: 15px; font-weight: 800;
+  }
+  .chip .ic { width: 18px; height: 18px; color: var(--blue); margin-top: -3px; }
+  .chip.time .ic { color: var(--red); }
+  .submit .btn-blue .ic { width: 28px; height: 28px; stroke-width: 2.2; margin-top: -4px; }
+
+  /* Bids list (host + players) */
+  .bids { margin-top: 12px; padding: 4px 14px; }
+  .bids h4, .au-ans h4 { font-size: 17px; font-weight: 800; color: #5b6880; padding: 6px 4px 0; }
+  .brow { display: flex; align-items: center; gap: 10px; height: 52px; direction: ltr; border-bottom: 1px solid var(--line); }
+  .brow:last-child { border-bottom: 0; }
+  .brow .name { flex: 1; font-size: 20px; font-weight: 800; padding-top: 4px; }
+  .brow .bid { font-size: 20px; font-weight: 800; padding-top: 4px; }
+  .brow .crop { box-shadow: 0 2px 5px rgba(0,0,0,.15); }
+  .brow.top { background: #fff3c4; margin: 0 -14px; padding: 0 14px; border-radius: 16px; border-bottom: 0; }
+  .brow.top .bid { color: #c98a00; }
+  .brow .gv { width: 22px; height: 22px; color: #c98a00; }
+  .au-host .qhead { margin-top: 18px; }
+  .au-host .brow { height: 42px; }
+  .au-host .bids { margin-top: 8px; }
+  .au-host .submit { bottom: 34px; }
+  .brow.me .name::after { content: " (إنت)"; font-size: 14px; color: #5b6880; }
+
+  /* Host: the winner's answer */
+  .au-ans { margin-top: 12px; padding: 6px 16px 14px; }
+  .au-ans .q { font-size: 19px; font-weight: 800; line-height: 1.35; padding: 6px 4px 0; }
+  .au-ans .arow { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+  .au-ans .abox {
+    flex: 1; min-height: 48px; border-radius: 16px; background: #fff8f1; border: 2px solid var(--line);
+    display: flex; flex-direction: column; justify-content: center; padding: 6px 12px 2px;
+  }
+  .au-ans .abox small { font-size: 12.5px; font-weight: 700; color: #5b6880; }
+  .au-ans .abox span { font-size: 21px; font-weight: 800; line-height: 1.2; }
+  .au-ans .verdict { width: 46px; height: 46px; cursor: pointer; transition: transform .12s; }
+  .au-ans .verdict.on.yes { background: #1fae6a; color: #fff; border-color: #1fae6a; }
+  .au-ans .verdict.on.no { background: var(--red); color: #fff; border-color: var(--red); }
+  .au-ans .key { margin-top: 8px; font-size: 14px; font-weight: 700; color: #5b6880; }
+  .au-ans .key b { color: #1fae6a; }
+  .au-ans .result { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; direction: ltr; }
+  .au-ans .result .name { font-size: 20px; font-weight: 800; padding-top: 4px; }
+  .au-ans .result .delta { min-width: 86px; height: 36px; font-size: 20px; }
+  .au-ans .result .delta.idle { background: #e3d6c6; color: #8a7a66; box-shadow: none; }
+
+  /* Players: waiting for the winner */
+  .au-won { margin-top: 26px; padding: 14px 16px 12px; text-align: center; position: relative; }
+  .au-won .who { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .au-won .who .crop { border: 3px solid var(--yellow); box-shadow: 0 3px 8px rgba(0,0,0,.18); }
+  .au-won .who b { font-size: 26px; font-weight: 800; line-height: 1.2; }
+  .au-won .amt {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; height: 40px; padding: 4px 18px 0; border-radius: 20px;
+    background: var(--yellow); font-size: 22px; font-weight: 800; box-shadow: 0 3px 0 #d79e00;
+  }
+  .au-won .amt .ic { width: 22px; height: 22px; margin-top: -4px; }
+  .au-q { margin-top: 12px; padding: 14px 16px; text-align: center; font-size: 21px; font-weight: 800; line-height: 1.4; }
+  .au-q small { display: block; font-size: 13.5px; font-weight: 700; color: #5b6880; }
+  .typing {
+    margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 10px;
+    font-size: 17px; font-weight: 800; color: #3d4c66;
+  }
+  .typing .dots { display: inline-flex; gap: 4px; }
+  .typing .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); animation: blink 1.2s infinite; }
+  .typing .dots i:nth-child(2) { animation-delay: .2s; }
+  .typing .dots i:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+
+  /* ----- Millionaire ladder (من سيربح الفورة) ----- */
+  .ml-q { margin-top: 30px; padding: 20px 16px 14px; text-align: center; position: relative; }
+  .ml-q small { display: block; font-size: 14.5px; font-weight: 700; color: #5b6880; }
+  .ml-q b { display: block; font-size: 24px; font-weight: 800; line-height: 1.35; padding-top: 4px; }
+  .lifelines { display: flex; justify-content: center; gap: 18px; margin-top: 12px; }
+  .ll { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12.5px; font-weight: 800; cursor: pointer; }
+  .ll .c {
+    width: 50px; height: 50px; border-radius: 50%; background: var(--card); box-shadow: var(--shadow); border: 2.5px solid var(--navy);
+    display: grid; place-items: center; font-size: 16px; font-weight: 800; direction: ltr; padding-top: 3px;
+  }
+  .ll .c .ic { width: 24px; height: 24px; margin-top: -3px; }
+  .ll.used { opacity: .35; pointer-events: none; }
+  .ll.used .c { position: relative; }
+  .ll.used .c::after { content: ""; position: absolute; left: 6px; right: 6px; top: 50%; height: 3px; background: var(--red); transform: rotate(-35deg); border-radius: 2px; }
+  .choices { display: grid; gap: 9px; margin-top: 12px; }
+  .choice {
+    height: 50px; border-radius: 25px; background: var(--card); box-shadow: var(--shadow); cursor: pointer;
+    display: flex; align-items: center; gap: 10px; padding: 0 8px 0 16px; font-size: 19px; font-weight: 800;
+    border: 2.5px solid transparent; transition: background .15s, opacity .2s;
+  }
+  .choice .l {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--yellow); flex: none; display: grid; place-items: center;
+    font-size: 17px; padding-top: 3px; border: 2px solid var(--navy);
+  }
+  .choice span:last-child { padding-top: 3px; }
+  .choice.pick { background: #fff3c4; border-color: var(--navy); }
+  .choice.right { background: #d6f5e5; border-color: #1fae6a; }
+  .choice.right .l { background: #1fae6a; color: #fff; border-color: #1fae6a; }
+  .choice.wrong { background: #fde0dc; border-color: var(--red); }
+  .choice.gone { opacity: 0; pointer-events: none; }
+  .choice .key-ic { margin-right: auto; width: 22px; height: 22px; color: #1fae6a; stroke-width: 3; }
+  .ml-btns { position: absolute; left: 22px; right: 22px; bottom: 34px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 10px; }
+  .ml-btns .btn-ghost { font-size: 17px; }
+  .ml-btns .btn-blue { height: 50px; font-size: 21px; padding-top: 3px; }
+  .ml-btns .btn-blue .ic { width: 24px; height: 24px; margin-top: -3px; }
+
+  /* Ladder: horizontal steps (host) */
+  .steps { margin-top: 10px; padding: 10px 12px 8px; }
+  .steps h4 { font-size: 15px; font-weight: 800; color: #5b6880; }
+  .steps .row { display: flex; gap: 4px; direction: ltr; margin-top: 6px; }
+  .steps .row i { flex: 1; height: 10px; border-radius: 5px; background: #e6d8c7; position: relative; }
+  .steps .row i.done { background: #2cc47f; }
+  .steps .row i.now { background: var(--yellow); outline: 2px solid var(--navy); }
+  .steps .row i.safe::after { content: "★"; position: absolute; top: -17px; left: 50%; transform: translateX(-50%); font-size: 12px; color: #c98a00; font-style: normal; }
+  .steps .lbl { display: flex; justify-content: space-between; direction: ltr; font-size: 12.5px; font-weight: 700; color: #5b6880; margin-top: 4px; }
+  .host-note { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #5b6880; margin-top: 8px; }
+  .host-note .ic { width: 16px; height: 16px; margin-top: -2px; }
+
+  /* Ladder: vertical (watchers) */
+  .ladder { margin-top: 10px; padding: 8px 12px; }
+  .ladder .st { display: flex; align-items: center; gap: 10px; height: 26px; padding: 2px 12px 0; border-radius: 13px; direction: ltr; font-size: 15px; font-weight: 800; color: #8a93a6; }
+  .ladder .st em { width: 22px; font-style: normal; font-size: 13px; }
+  .ladder .st b { flex: 1; text-align: right; }
+  .ladder .st.safe { color: var(--navy); }
+  .ladder .st.safe b::after { content: " ★"; color: #c98a00; }
+  .ladder .st.done { color: #1fae6a; }
+  .ladder .st.now { background: var(--yellow); color: var(--navy); box-shadow: 0 2px 0 #d79e00; }
+  .ml-seat { margin-top: 26px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; position: relative; }
+  .ml-seat .crop { border: 3px solid var(--yellow); }
+  .ml-seat .t { flex: 1; }
+  .ml-seat .t b { display: block; font-size: 22px; font-weight: 800; line-height: 1.2; }
+  .ml-seat .t small { font-size: 14px; font-weight: 700; color: #5b6880; }
+  .ml-mini { margin-top: 10px; padding: 10px 14px; font-size: 17px; font-weight: 800; line-height: 1.4; text-align: center; }
+  .ml-mini small { display: block; font-size: 13.5px; color: #5b6880; }
+
+  /* ----- فورة مواصلات: puzzle modes ----- */
+  .opt.art { width: 166px; height: 136px; display: grid; place-items: start center; padding-top: 10px; }
+  .opt.art.blue { background: radial-gradient(circle at 50% 30%, #8fd3ff, #3fb0f4 70%); }
+  .opt.art.yellow { background: radial-gradient(circle at 50% 30%, #ffe48a, #ffc61e 70%); }
+  .opt.art svg { width: 86px; height: 66px; }
+
+  .pz-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+  .pz-lvl { text-align: center; }
+  .pz-lvl small {
+    display: inline-block; height: 22px; padding: 2px 12px 0; border-radius: 11px; background: var(--navy); color: #fff;
+    font-size: 12px; font-weight: 800; letter-spacing: .06em; direction: ltr;
+  }
+  .pz-lvl b { display: block; font-size: 26px; font-weight: 800; line-height: 1.2; color: var(--red); }
+  .hearts { display: flex; gap: 4px; direction: ltr; }
+  .hearts svg { width: 26px; height: 26px; }
+  .hearts svg.lost { opacity: .22; }
+  .round-ic {
+    width: 48px; height: 48px; border-radius: 50%; background: var(--card); box-shadow: var(--shadow); color: var(--navy);
+    display: grid; place-items: center; position: relative; cursor: pointer; flex: none;
+  }
+  .round-ic .ic { width: 24px; height: 24px; stroke-width: 2.6; }
+  .round-ic.y { background: var(--yellow); box-shadow: 0 3px 0 #d79e00; }
+  .round-ic .n {
+    position: absolute; top: -6px; right: -6px; min-width: 22px; height: 22px; border-radius: 11px; background: #fff;
+    border: 2px solid var(--navy); font-size: 12px; font-weight: 800; display: grid; place-items: center; padding-top: 2px;
+  }
+  .round-ic .adb {
+    position: absolute; bottom: -5px; right: -5px; width: 22px; height: 22px; border-radius: 50%; background: #1fae6a; color: #fff;
+    display: grid; place-items: center; border: 2px solid #fff;
+  }
+  .round-ic .adb .ic { width: 12px; height: 12px; stroke-width: 2.4; }
+
+  /* Arrows board */
+  .arrows-board { margin-top: 12px; padding: 14px; position: relative; }
+  .arrows-board svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .arrows-board .grid-dots circle { fill: rgba(19, 40, 75, .1); }
+  .arrows-board.show-grid .grid-dots circle { fill: rgba(19, 40, 75, .32); }
+  .arr { fill: none; stroke: var(--navy); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; transition: transform .55s cubic-bezier(.5, 0, .9, .4), opacity .45s .1s; }
+  .arr:hover { stroke: var(--blue); }
+  .arr.out { opacity: 0; pointer-events: none; }
+  .pz-foot { position: absolute; left: 24px; right: 24px; bottom: 34px; display: flex; justify-content: space-between; align-items: center; }
+  .pz-foot .round-ic { width: 60px; height: 60px; }
+  .pz-foot .round-ic .ic { width: 30px; height: 30px; }
+  .pz-foot .moves { font-size: 16px; font-weight: 800; color: #5b6880; }
+
+  /* Blocks board */
+  .bk-scores { display: flex; gap: 10px; justify-content: center; margin-top: 2px; }
+  .bk-scores .chip { flex-direction: column; height: auto; padding: 6px 18px 4px; gap: 0; line-height: 1.15; border-radius: 16px; }
+  .bk-scores .chip small { font-size: 12px; font-weight: 700; color: #5b6880; }
+  .bk-scores .chip b { font-size: 21px; direction: ltr; }
+  .bk-scores .chip.best b { color: #1fae6a; }
+  .bk-tools { display: flex; justify-content: center; gap: 26px; margin-top: 12px; }
+  .bk-tools .round-ic.off { opacity: .45; }
+  .bk-board {
+    margin-top: 14px; padding: 8px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 3px; direction: ltr;
+    background: #ead9c4; box-shadow: 0 2px 6px rgba(120, 78, 40, .18) inset;
+  }
+  .bk-board i { aspect-ratio: 1; border-radius: 6px; background: #f6eadb; box-shadow: 0 1px 2px rgba(120, 78, 40, .12) inset; }
+  .bk-board i[data-c], .piece i { box-shadow: inset 0 -4px 0 rgba(0,0,0,.2), inset 0 3px 0 rgba(255,255,255,.4); }
+  [data-c="g"] { background: #7ed957 !important; }
+  [data-c="o"] { background: #ff8a2a !important; }
+  [data-c="b"] { background: #3d7be0 !important; }
+  [data-c="p"] { background: #b86bf0 !important; }
+  [data-c="r"] { background: #f5513f !important; }
+  [data-c="y"] { background: #ffcf2e !important; }
+  .bk-tray { display: flex; justify-content: space-around; align-items: center; margin-top: 18px; height: 84px; }
+  .piece { display: grid; gap: 2px; direction: ltr; cursor: pointer; padding: 6px; border-radius: 14px; transition: transform .15s, background .15s; }
+  .piece i { width: 22px; height: 22px; border-radius: 5px; }
+  .piece i.e { visibility: hidden; }
+  .piece.sel { background: rgba(255, 198, 30, .35); transform: scale(1.12); }
+  .bk-ad {
+    position: absolute; left: 16px; right: 16px; bottom: 22px; height: 58px; border-radius: 18px; background: #fff;
+    box-shadow: var(--shadow); display: flex; align-items: center; gap: 10px; padding: 0 10px;
+  }
+  .bk-ad .nlogo { width: 40px; height: 40px; border-radius: 12px; font-size: 11px; flex: none; }
+  .bk-ad .t { flex: 1; line-height: 1.2; }
+  .bk-ad .t b { display: block; font-size: 15px; }
+  .bk-ad .t small { font-size: 12px; font-weight: 600; color: #5b6880; }
+  .bk-ad .btn-blue { height: 32px; padding: 3px 14px 0; font-size: 14px; }
+  .bk-ad .ad-tag { position: absolute; top: -9px; right: 14px; }
+
   /* ----- Ads (proposal) ----- */
   .gallery-sec {
     grid-column: 1 / -1; text-align: center; margin-top: 24px; font-size: 15px; font-weight: 800; letter-spacing: .12em;
@@ -467,6 +692,16 @@
   <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="pair" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.2"/><circle cx="16.5" cy="9" r="2.8"/><path d="M2.5 20v-.5A5.5 5.5 0 0 1 8 14a5.5 5.5 0 0 1 5.5 5.5v.5"/><path d="M15 14.2a4.8 4.8 0 0 1 6.5 4.5v.8"/></symbol>
   <symbol id="exit" viewBox="0 0 24 24"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21H13"/><path d="m17 8 4 4-4 4M21 12H10"/></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8.5-5.2-8.5-11.2A4.8 4.8 0 0 1 12 7a4.8 4.8 0 0 1 8.5 2.8C20.5 15.8 12 21 12 21z" fill="#ee3a2a" stroke="#13284b" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="restart" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></symbol>
+  <symbol id="undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></symbol>
+  <symbol id="broom" viewBox="0 0 24 24"><path d="M19.5 3.5 12 11"/><path d="M12.5 10.5c-3-1.5-6.5 0-8 4.5l4.5 4.5c4.5-1.5 6-5 4.5-8z"/><path d="M7 17.5 9.5 15M5.5 15.5 7 14M9 19.5l1.5-1.5"/></symbol>
+  <symbol id="grid" viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></symbol>
+  <symbol id="arrows" viewBox="0 0 24 24"><path d="M4 20V6h12"/><path d="m13 3 3 3-3 3"/><path d="M9 20h11v-8"/><path d="m17 15 3-3 3 3"/></symbol>
+  <symbol id="blocks" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="coins" viewBox="0 0 24 24"><ellipse cx="9" cy="7" rx="6" ry="3"/><path d="M3 7v4c0 1.7 2.7 3 6 3s6-1.3 6-3V7"/><path d="M9 14v3c0 1.7 2.7 3 6 3s6-1.3 6-3v-4c0-1.7-2.7-3-6-3"/></symbol>
   <symbol id="gift" viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M2.5 9h19v-1a1.5 1.5 0 0 0-1.5-1.5H4A1.5 1.5 0 0 0 2.5 8zM12 6.5v14M12 6.5S10.5 2.5 8 3s-1.5 3.5 4 3.5zM12 6.5s1.5-4 4-3.5 1.5 3.5-4 3.5z"/></symbol>
   <symbol id="tv-play" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="13.5" rx="2.5"/><path d="M8 21h8"/><path d="M10.2 8.6v5.3l4.4-2.65z" fill="currentColor"/></symbol>
   <symbol id="skip" viewBox="0 0 24 24"><path d="m5 6 8 6-8 6zM17 6v12"/></symbol>
@@ -947,6 +1182,363 @@
 <p class="cap">06 · Settings</p>
 </section>
 
+<p class="gallery-sec">فورة مزاد · AUCTION FLOW<small>Bid on the category, the highest bidder answers alone, the host marks it.</small></p>
+
+<!-- ================= 8. Auction: bid on the category ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="card au-cat">
+      <span class="qbadge">Q1</span>
+      <svg class="burst y" style="position:absolute;top:-30px;right:14px;transform:rotate(-60deg)"><use href="#burst"/></svg>
+      <small>الكاتيجوري</small>
+      <b>سينما مصرية التسعينات</b>
+      <span class="hidden-q"><svg class="ic"><use href="#lock"/></svg>السؤال هيظهر للي يكسب المزاد بس</span>
+    </div>
+
+    <div class="au-meta">
+      <span class="chip"><svg class="ic"><use href="#coins"/></svg>رصيدك 2,400</span>
+      <span class="chip time"><svg class="ic"><use href="#clock"/></svg>0:12</span>
+    </div>
+    <div class="flabel">Your bid</div>
+    <div class="card picker">
+      <div class="band"></div>
+      <div class="wheel"><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span></div>
+    </div>
+  </div>
+  <div class="submit"><svg class="burst y flip"><use href="#burst"/></svg><span class="btn-blue"><span>زايد</span><svg class="ic"><use href="#gavel"/></svg></span><svg class="burst y"><use href="#burst"/></svg></div>
+</div></div>
+<p class="cap">08 · Auction: bid on the category (wheel)</p>
+</section>
+
+<!-- ================= 8a. Auction: host marks the winner's answer ================= -->
+<section>
+<div class="phone"><div class="screen au-host">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="qhead"><span class="qbadge">Q1</span><span class="chip">سينما مصرية التسعينات</span><span class="qchat"><svg class="ic"><use href="#chat"/></svg></span></div>
+    <div class="card bids">
+      <h4>المزايدات</h4>
+      <div class="brow top"><div class="crop round src-friends" style="--x:237;--y:551;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Omar</span><svg class="ic gv"><use href="#gavel"/></svg><span class="bid">700</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:327;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Ammar</span><span class="bid">500</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:438;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Hazem</span><span class="bid">300</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:589;--y:950;--w:104;--h:104;--bw:38;--bh:38"></div><span class="name">Ahmed</span><span class="bid">200</span></div>
+    </div>
+    <div class="card au-ans" data-bid="700">
+      <h4>إجابة Omar</h4>
+      <p class="q">مين بطل فيلم «إسماعيلية رايح جاي» سنة 1997؟</p>
+      <div class="arow">
+        <div class="abox"><small>Omar كتب</small><span>محمد فؤاد</span></div>
+        <span class="verdict no"><svg class="ic"><use href="#x"/></svg></span>
+        <span class="verdict yes"><svg class="ic"><use href="#check"/></svg></span>
+      </div>
+      <p class="key">الإجابة الصح: <b>محمد فؤاد</b></p>
+      <div class="result"><span class="name">Omar</span><span class="delta idle">± 700</span></div>
+    </div>
+  </div>
+  <div class="submit next-q"><svg class="burst y flip"><use href="#burst"/></svg><span class="btn-blue"><span>احسب النقط</span><svg class="ic"><use href="#arrow-r"/></svg></span><svg class="burst y"><use href="#burst"/></svg></div>
+</div></div>
+<p class="cap">08a · Auction: host marks the answer (tap ✓ or ✗)</p>
+</section>
+
+<!-- ================= 8b. Auction: other players wait ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="card au-won">
+      <span class="qbadge">Q1</span>
+      <svg class="burst y" style="position:absolute;top:-30px;right:14px;transform:rotate(-60deg)"><use href="#burst"/></svg>
+      <div class="who"><div class="crop round src-friends" style="--x:237;--y:551;--w:100;--h:100;--bw:56;--bh:56"></div><b>Omar كسب المزاد!</b></div>
+      <span class="amt"><svg class="ic"><use href="#gavel"/></svg>700</span>
+    </div>
+    <div class="card au-q"><small>سينما مصرية التسعينات</small>مين بطل فيلم «إسماعيلية رايح جاي» سنة 1997؟</div>
+    <div class="typing"><span>Omar بيجاوب دلوقتي</span><span class="dots"><i></i><i></i><i></i></span><span class="chip time"><svg class="ic"><use href="#clock"/></svg>0:18</span></div>
+    <div class="card bids">
+      <h4>المزايدات</h4>
+      <div class="brow top"><div class="crop round src-friends" style="--x:237;--y:551;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Omar</span><svg class="ic gv"><use href="#gavel"/></svg><span class="bid">700</span></div>
+      <div class="brow me"><div class="crop round src-friends" style="--x:237;--y:327;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Ammar</span><span class="bid">500</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:438;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Hazem</span><span class="bid">300</span></div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">08b · Auction: other players wait</p>
+</section>
+
+<p class="gallery-sec">من سيربح الفورة · LADDER FLOW (DRAFT)<small>The brief only says "in the style of Who Wants to Be a Millionaire". This sequence is a proposal to approve.</small></p>
+
+<!-- ================= 9. Ladder: the player in the seat answers ================= -->
+<section>
+<div class="phone"><div class="screen ml-play">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="card ml-q">
+      <span class="qbadge">Q5</span>
+      <svg class="burst y" style="position:absolute;top:-30px;right:14px;transform:rotate(-60deg)"><use href="#burst"/></svg>
+      <small>السؤال 5 من 10 · على <b style="display:inline;font-size:inherit">1,000</b> نقطة</small>
+      <b>أنهي فيلم من دول بطولة أحمد زكي؟</b>
+    </div>
+    <div class="lifelines">
+      <div class="ll" data-ll="5050"><span class="c">50:50</span>شيل اتنين</div>
+      <div class="ll"><span class="c"><svg class="ic"><use href="#users"/></svg></span>اسأل صاحبك</div>
+      <div class="ll"><span class="c"><svg class="ic"><use href="#bars"/></svg></span>رأي الأوضة</div>
+    </div>
+    <div class="choices" data-right="1">
+      <div class="choice"><span class="l">أ</span><span>الإرهاب والكباب</span></div>
+      <div class="choice pick"><span class="l">ب</span><span>أيام السادات</span></div>
+      <div class="choice"><span class="l">ج</span><span>صعيدي في الجامعة الأمريكية</span></div>
+      <div class="choice"><span class="l">د</span><span>اللمبي</span></div>
+    </div>
+  </div>
+  <div class="ml-btns">
+    <div class="btn-ghost">انسحب بـ 500</div>
+    <div class="btn-blue"><span>تأكيد الإجابة</span><svg class="ic"><use href="#check"/></svg></div>
+  </div>
+</div></div>
+<p class="cap">09 · Ladder: player in the seat (tap a choice, try 50:50)</p>
+</section>
+
+<!-- ================= 9a. Ladder: host reveals ================= -->
+<section>
+<div class="phone"><div class="screen ml-host">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="qhead"><span class="qbadge">Q5</span><span class="chip" dir="rtl">Omar على 1,000</span><span class="qchat"><svg class="ic"><use href="#chat"/></svg></span></div>
+    <div class="card ml-mini"><small>سينما مصرية</small>أنهي فيلم من دول بطولة أحمد زكي؟</div>
+    <div class="choices host-choices">
+      <div class="choice"><span class="l">أ</span><span>الإرهاب والكباب</span></div>
+      <div class="choice pick" data-right><span class="l">ب</span><span>أيام السادات</span><svg class="ic key-ic"><use href="#check"/></svg></div>
+      <div class="choice"><span class="l">ج</span><span>صعيدي في الجامعة الأمريكية</span></div>
+      <div class="choice"><span class="l">د</span><span>اللمبي</span></div>
+    </div>
+    <p class="host-note"><svg class="ic"><use href="#eye"/></svg>الأصفر = اختيار Omar · ✓ = الإجابة الصح (ظاهرة ليك بس)</p>
+    <div class="card steps">
+      <h4>Omar على السلم</h4>
+      <div class="row"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="now safe"></i><i></i><i></i><i></i><i></i><i class="safe"></i></div>
+      <div class="lbl"><span>100</span><span>1,000 ★</span><span>32,000 ★</span></div>
+    </div>
+  </div>
+  <div class="submit next-q"><svg class="burst y flip"><use href="#burst"/></svg><span class="btn-blue ml-reveal"><span>اكشف الإجابة</span><svg class="ic"><use href="#eye"/></svg></span><svg class="burst y"><use href="#burst"/></svg></div>
+</div></div>
+<p class="cap">09a · Ladder: host reveals (tap the button)</p>
+</section>
+
+<!-- ================= 9b. Ladder: the room watches ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="card ml-seat">
+      <span class="qbadge">Q5</span>
+      <div class="crop round src-friends" style="--x:237;--y:551;--w:100;--h:100;--bw:56;--bh:56"></div>
+      <div class="t"><b>Omar على الكرسي</b><small>اختار <b style="display:inline;font-size:inherit">ب</b> · مستني الهوست يكشف <span class="typing" style="display:inline-flex;margin:0;vertical-align:middle"><span class="dots"><i></i><i></i><i></i></span></span></small></div>
+    </div>
+    <div class="card ml-mini"><small>السؤال 5 من 10</small>أنهي فيلم من دول بطولة أحمد زكي؟</div>
+    <div class="card ladder">
+      <div class="st safe"><em>10</em><b>32,000</b></div>
+      <div class="st"><em>9</em><b>16,000</b></div>
+      <div class="st"><em>8</em><b>8,000</b></div>
+      <div class="st"><em>7</em><b>4,000</b></div>
+      <div class="st"><em>6</em><b>2,000</b></div>
+      <div class="st now safe"><em>5</em><b>1,000</b></div>
+      <div class="st done"><em>4</em><b>500</b></div>
+      <div class="st done"><em>3</em><b>300</b></div>
+      <div class="st done"><em>2</em><b>200</b></div>
+      <div class="st done"><em>1</em><b>100</b></div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">09b · Ladder: the room watches</p>
+</section>
+
+<p class="gallery-sec">فورة مواصلات · PUZZLE MODES<small>Two solo puzzles: Arrows and Colored blocks.</small></p>
+
+<!-- ================= 10. فورة مواصلات: pick a puzzle (over Home) ================= -->
+<section>
+<div class="phone"><div class="screen" data-clone="home-screen">
+  <div class="dim"></div>
+  <div class="modal">
+    <div class="mhdr">
+      <span class="close"><svg class="ic"><use href="#x"/></svg></span>
+      <div class="mart">
+        <svg class="burst y flip"><use href="#burst"/></svg>
+        <svg class="ic" viewBox="0 0 24 24" style="width:72px;height:66px;color:#fff;stroke-width:1.7"><use href="#bus"/></svg>
+        <svg class="burst y"><use href="#burst"/></svg>
+      </div>
+      <svg class="wave"><use href="#wave"/></svg>
+      <div class="mtitle"><svg class="burst r flip"><use href="#burst"/></svg><span class="outlined">فورة مواصلات</span><svg class="burst r"><use href="#burst"/></svg></div>
+    </div>
+    <p class="mtext">لعبة تسلّيك في الطريق، لوحدك.<br>اختار نوع الفورة اللي على مزاجك.</p>
+    <div class="opts">
+      <div class="opt art blue">
+        <svg viewBox="0 0 86 66"><g fill="none" stroke="#13284b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 58V12h40"/><path d="m42 4 9 8-9 8"/><path d="M30 58h44V30"/><path d="m66 38 8-9 8 9"/></g></svg>
+        <div class="olabel"><b>فورة<br><u>الأسهم</u></b><svg class="ic"><use href="#arrows"/></svg></div>
+      </div>
+      <div class="opt art yellow">
+        <svg viewBox="0 0 86 66"><g stroke="#13284b" stroke-width="2.5"><rect x="6" y="30" width="16" height="16" rx="3" fill="#7ed957"/><rect x="22" y="30" width="16" height="16" rx="3" fill="#7ed957"/><rect x="22" y="14" width="16" height="16" rx="3" fill="#7ed957"/><rect x="46" y="14" width="16" height="16" rx="3" fill="#3d7be0"/><rect x="62" y="14" width="16" height="16" rx="3" fill="#3d7be0"/><rect x="46" y="30" width="16" height="16" rx="3" fill="#ff8a2a"/><rect x="62" y="30" width="16" height="16" rx="3" fill="#f5513f"/></g></svg>
+        <div class="olabel"><b>فورة<br><u>البلوكات</u></b><svg class="ic"><use href="#blocks"/></svg></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">10 · فورة مواصلات: pick a puzzle</p>
+</section>
+
+<!-- ================= 10a. Arrows ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="pz-bar">
+      <span class="round-ic pz-restart"><svg class="ic"><use href="#restart"/></svg></span>
+      <div class="pz-lvl"><small>EASY</small><b>مرحلة 1</b></div>
+      <div class="hearts"><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg><svg><use href="#heart"/></svg></div>
+    </div>
+    <div class="card arrows-board">
+      <svg viewBox="-10 -10 340 340">
+        <defs>
+          <marker id="ahead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="2.6" markerHeight="2.6" orient="auto-start-reverse">
+            <path d="M0 0 10 5 0 10z" fill="#13284b"/>
+          </marker>
+        </defs>
+        <g class="grid-dots"></g>
+        <g class="arr-set" marker-end="url(#ahead)">
+          <path class="arr" data-dir="u" d="M20 260V24"/>
+          <path class="arr" data-dir="r" d="M60 60V20H296"/>
+          <path class="arr" data-dir="l" d="M260 140V60H104"/>
+          <path class="arr" data-dir="d" d="M180 100H60V176"/>
+          <path class="arr" data-dir="d" d="M300 60V216"/>
+          <path class="arr" data-dir="u" d="M100 300V144"/>
+          <path class="arr" data-dir="d" d="M140 140V296"/>
+          <path class="arr" data-dir="r" d="M180 220H256"/>
+          <path class="arr" data-dir="u" d="M220 300H300V264"/>
+          <path class="arr" data-dir="l" d="M260 180H204"/>
+          <path class="arr" data-dir="l" d="M60 220V300H24"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="pz-foot">
+    <span class="round-ic pz-grid"><svg class="ic"><use href="#grid"/></svg></span>
+    <span class="moves">دوس على السهم عشان يطلع برّه</span>
+    <span class="round-ic y"><svg class="ic"><use href="#bulb-o"/></svg><span class="adb"><svg class="ic"><use href="#tv-play"/></svg></span></span>
+  </div>
+</div></div>
+<p class="cap">10a · Arrows (tap an arrow to send it out)</p>
+</section>
+
+<!-- ================= 10b. Colored blocks ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="bk-scores">
+      <span class="chip"><small>السكور</small><b>240</b></span>
+      <span class="chip best"><small>أعلى سكور</small><b>1,633</b></span>
+    </div>
+    <div class="bk-tools">
+      <span class="round-ic off"><svg class="ic"><use href="#undo"/></svg><span class="n">1</span></span>
+      <span class="round-ic y"><svg class="ic"><use href="#broom"/></svg><span class="n">1</span></span>
+      <span class="round-ic y"><svg class="ic"><use href="#bulb-o"/></svg><span class="n">1</span></span>
+    </div>
+    <div class="card bk-board" data-cells="..................gg......g...bb......bboo....p.oooyy.p.rr.yy.pp"></div>
+    <div class="bk-tray">
+      <div class="piece" data-shape="g..|ggg"></div>
+      <div class="piece" data-shape="rrr|.r."></div>
+      <div class="piece" data-shape="bb|bb"></div>
+    </div>
+  </div>
+  <div class="bk-ad">
+    <span class="ad-tag">إعلان</span>
+    <div class="nlogo ad-ph">لوجو</div>
+    <div class="t"><b>اسم البراند</b><small>جملة إعلان قصيرة</small></div>
+    <span class="btn-blue">نزّل</span>
+  </div>
+</div></div>
+<p class="cap">10b · Colored blocks (tap a piece to pick it)</p>
+</section>
+
 <p class="gallery-sec">ADS · PROPOSAL<small>Ideas to discuss, not approved. No ads on any screen with a timer.</small></p>
 
 <!-- ================= 7. Game over + rewarded-ad offer ================= -->
@@ -1192,6 +1784,93 @@
         label.textContent = opt.textContent.trim();
         dd.classList.remove('open');
       });
+    });
+  });
+
+  // Auction host: tap ✓ or ✗ on the winner's answer to preview the points change.
+  document.querySelectorAll('.au-ans').forEach(function (card) {
+    var bid = Number(card.dataset.bid);
+    var delta = card.querySelector('.result .delta');
+    card.querySelectorAll('.verdict').forEach(function (v) {
+      v.addEventListener('click', function () {
+        var right = v.classList.contains('yes');
+        card.querySelectorAll('.verdict').forEach(function (o) { o.classList.toggle('on', o === v); });
+        delta.className = 'delta ' + (right ? 'up' : 'down');
+        delta.textContent = (right ? '+' : '−') + bid.toLocaleString('en');
+      });
+    });
+  });
+
+  // Ladder player: tap a choice to pick it; 50:50 hides two wrong answers once.
+  document.querySelectorAll('.ml-play').forEach(function (screen) {
+    var list = screen.querySelector('.choices');
+    var choices = list.querySelectorAll('.choice');
+    var right = Number(list.dataset.right);
+    choices.forEach(function (c) {
+      c.addEventListener('click', function () { choices.forEach(function (o) { o.classList.toggle('pick', o === c); }); });
+    });
+    screen.querySelector('[data-ll="5050"]').addEventListener('click', function () {
+      var wrong = [];
+      choices.forEach(function (c, n) { if (n !== right) wrong.push(c); });
+      var keep = wrong.find(function (c) { return c.classList.contains('pick'); }) || wrong[wrong.length - 1];
+      wrong.filter(function (c) { return c !== keep; }).forEach(function (c) { c.classList.add('gone'); c.classList.remove('pick'); });
+      this.classList.add('used');
+    });
+  });
+
+  // Ladder host: reveal turns the player's pick green (right) or red (wrong); tap again to reset.
+  document.querySelectorAll('.ml-host').forEach(function (screen) {
+    var btn = screen.querySelector('.ml-reveal');
+    var label = btn.querySelector('span');
+    btn.addEventListener('click', function () {
+      var revealed = screen.classList.toggle('revealed');
+      screen.querySelectorAll('.host-choices .choice').forEach(function (c) {
+        var isRight = c.hasAttribute('data-right');
+        c.classList.toggle('right', revealed && isRight);
+        c.classList.toggle('wrong', revealed && c.classList.contains('pick') && !isRight);
+      });
+      label.textContent = revealed ? 'السؤال اللي بعده' : 'اكشف الإجابة';
+    });
+  });
+
+  // Arrows puzzle: dot grid, tap an arrow to slide it out the way it points; restart brings them back.
+  document.querySelectorAll('.arrows-board').forEach(function (board) {
+    var dots = board.querySelector('.grid-dots');
+    var NS = 'http://www.w3.org/2000/svg';
+    for (var gx = 0; gx < 8; gx++) for (var gy = 0; gy < 8; gy++) {
+      var c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', 20 + gx * 40); c.setAttribute('cy', 20 + gy * 40); c.setAttribute('r', 3);
+      dots.appendChild(c);
+    }
+    var away = { u: [0, -420], d: [0, 420], l: [-420, 0], r: [420, 0] };
+    board.querySelectorAll('.arr').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var v = away[a.dataset.dir];
+        a.style.transform = 'translate(' + v[0] + 'px,' + v[1] + 'px)';
+        a.classList.add('out');
+      });
+    });
+    var screen = board.closest('.screen');
+    screen.querySelector('.pz-restart').addEventListener('click', function () {
+      board.querySelectorAll('.arr').forEach(function (a) { a.style.transform = ''; a.classList.remove('out'); });
+    });
+    screen.querySelector('.pz-grid').addEventListener('click', function () { board.classList.toggle('show-grid'); });
+  });
+
+  // Blocks puzzle: build the board and the pieces from short strings; tap a piece to pick it.
+  document.querySelectorAll('.bk-board').forEach(function (board) {
+    board.innerHTML = board.dataset.cells.split('').map(function (ch) {
+      return ch === '.' ? '<i></i>' : '<i data-c="' + ch + '"></i>';
+    }).join('');
+  });
+  document.querySelectorAll('.piece').forEach(function (p) {
+    var rows = p.dataset.shape.split('|');
+    p.style.gridTemplateColumns = 'repeat(' + rows[0].length + ', 22px)';
+    p.innerHTML = rows.join('').split('').map(function (ch) {
+      return ch === '.' ? '<i class="e"></i>' : '<i data-c="' + ch + '"></i>';
+    }).join('');
+    p.addEventListener('click', function () {
+      p.parentNode.querySelectorAll('.piece').forEach(function (o) { o.classList.toggle('sel', o === p && !o.classList.contains('sel')); });
     });
   });
 
