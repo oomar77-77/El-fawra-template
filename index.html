@@ -131,7 +131,7 @@
     box-shadow: 0 2px 4px rgba(150, 100, 40, .18);
   }
   .power {
-    position: absolute; right: -8px; top: 330px; width: 46px; height: 168px; border-radius: 23px;
+    position: absolute; right: -8px; top: 392px; width: 46px; height: 168px; border-radius: 23px;
     background: linear-gradient(90deg, #fbe3bd, #f6d39c); border: 2.5px solid var(--navy); z-index: 3;
     writing-mode: vertical-rl; display: flex; align-items: center; justify-content: center;
     font-size: 22px; font-weight: 800; direction: ltr; padding-left: 4px;
@@ -257,7 +257,7 @@
     transform: translateX(var(--pu-w)); transition: transform .38s cubic-bezier(.22, .9, .3, 1.1), box-shadow .38s;
     touch-action: none;
   }
-  .pu-drawer .power { position: absolute; right: auto; left: -40px; top: 330px; cursor: grab; user-select: none; }
+  .pu-drawer .power { position: absolute; right: auto; left: -40px; top: 392px; cursor: grab; user-select: none; }
   .pu-open .pu-dim { opacity: 1; pointer-events: auto; }
   .pu-open .pu-drawer { transform: translateX(0); box-shadow: -12px 0 40px rgba(0, 0, 0, .3); }
   .pu-drawer.dragging { transition: none; }
@@ -534,18 +534,8 @@
   .piece i { width: 22px; height: 22px; border-radius: 5px; }
   .piece i.e { visibility: hidden; }
   .piece.sel { background: rgba(255, 198, 30, .35); transform: scale(1.12); }
-  .bk-ad {
-    position: absolute; left: 16px; right: 16px; bottom: 22px; height: 58px; border-radius: 18px; background: #fff;
-    box-shadow: var(--shadow); display: flex; align-items: center; gap: 10px; padding: 0 10px;
-  }
-  .bk-ad .nlogo { width: 40px; height: 40px; border-radius: 12px; font-size: 11px; flex: none; }
-  .bk-ad .t { flex: 1; line-height: 1.2; }
-  .bk-ad .t b { display: block; font-size: 15px; }
-  .bk-ad .t small { font-size: 12px; font-weight: 600; color: #5b6880; }
-  .bk-ad .btn-blue { height: 32px; padding: 3px 14px 0; font-size: 14px; }
-  .bk-ad .ad-tag { position: absolute; top: -9px; right: 14px; }
 
-  /* ----- Ads (proposal) ----- */
+  /* ----- Section headings and ad parts ----- */
   .gallery-sec {
     grid-column: 1 / -1; text-align: center; margin-top: 24px; font-size: 15px; font-weight: 800; letter-spacing: .12em;
     color: #7a6650; direction: ltr; border-top: 2px dashed rgba(122, 102, 80, .35); padding-top: 26px; width: 100%;
@@ -560,94 +550,82 @@
     background: repeating-linear-gradient(135deg, #eef1f6 0 12px, #e3e8f0 12px 24px);
   }
 
-  /* Game over */
-  .go-title { font-size: 34px; }
-  .standings { margin-top: 6px; padding: 2px 14px; }
-  .standings .srow2 { height: 54px; }
-  .standings .rank { width: 30px; font-size: 20px; font-weight: 800; color: #8a7a66; }
-  .standings .srow2.win .rank { color: #e0a800; }
-  .standings .pts { font-size: 20px; font-weight: 800; }
-  .reward {
-    margin-top: 14px; padding: 14px 14px 12px; position: relative; text-align: center;
-    background: linear-gradient(180deg, #fff6d6, #ffeaa6); border: 2.5px dashed #f2b600;
-  }
-  .reward .rtop { display: flex; align-items: center; gap: 12px; text-align: right; }
-  .reward .rico {
-    width: 54px; height: 54px; border-radius: 16px; background: var(--yellow); flex: none;
-    display: grid; place-items: center; box-shadow: 0 3px 0 #d79e00;
-  }
-  .reward .rico .ic { width: 32px; height: 32px; color: var(--navy); stroke-width: 2; }
-  .reward b { display: block; font-size: 19px; line-height: 1.3; }
-  .reward p { font-size: 14px; font-weight: 600; color: #5b6880; line-height: 1.35; }
-  .reward .btn-blue { height: 44px; margin-top: 10px; font-size: 19px; padding-top: 3px; }
-  .reward .btn-blue .ic { width: 24px; height: 24px; margin-top: -3px; }
-  .reward .fine { margin-top: 6px; font-size: 12.5px; color: #8a7a66; }
-  .go-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
-  .go-btns .btn-red { font-size: 19px; }
   .btn-ghost {
     height: 46px; border-radius: 23px; border: 2.5px solid var(--navy); display: flex; align-items: center;
     justify-content: center; font-size: 19px; font-weight: 800; padding-top: 3px;
   }
 
-  /* Ad playing (full screen) */
-  .adfull { position: absolute; inset: 0; background: #0f1a2c; color: #fff; }
-  .adfull .ad-ph { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, #1b2840 0 14px, #18233a 14px 28px); color: #6e7f9c; font-size: 22px; }
-  .adfull .ad-ph span { display: block; font-size: 14px; font-weight: 600; margin-top: 4px; }
-  .adbar { position: absolute; z-index: 5; top: 62px; left: 18px; right: 18px; display: flex; align-items: center; gap: 10px; }
-  .adbar .prog { flex: 1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.22); overflow: hidden; }
-  .adbar .prog i { display: block; height: 100%; width: 40%; background: var(--yellow); border-radius: 3px; }
-  .adbar .count {
-    height: 34px; padding: 3px 14px 0; border-radius: 17px; background: rgba(0,0,0,.45); font-size: 15px; font-weight: 800;
-    display: flex; align-items: center; white-space: nowrap;
+  /* ----- Sponsor card: one ad look for the whole app (full and slim) ----- */
+  .sp {
+    position: relative; margin-top: 16px; display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 14px;
+    border-radius: 24px; background: linear-gradient(135deg, #fff 0%, #fff4df 100%);
+    border: 2px dashed rgba(19, 40, 75, .18); box-shadow: 0 6px 14px rgba(120, 78, 40, .1);
   }
-  .adbar .xoff { width: 34px; height: 34px; border-radius: 50%; background: rgba(0,0,0,.45); display: grid; place-items: center; opacity: .4; }
-  .adbar .xoff .ic { width: 18px; height: 18px; stroke-width: 3; }
-  .adfull .ad-tag { position: absolute; z-index: 5; top: 108px; right: 18px; background: rgba(255,255,255,.18); color: #fff; }
-  .adprize {
-    position: absolute; z-index: 5; left: 16px; right: 16px; bottom: 30px; border-radius: 24px; background: var(--cream); color: var(--navy);
-    padding: 12px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  .sp .sp-tag {
+    position: absolute; top: -11px; left: 18px; height: 22px; padding: 3px 10px 0; border-radius: 11px;
+    background: var(--navy); color: #fff; font-size: 11.5px; font-weight: 800; transform: rotate(-4deg);
+    box-shadow: 0 2px 0 rgba(0,0,0,.15);
   }
-  .adprize .rico { width: 48px; height: 48px; border-radius: 14px; background: var(--yellow); display: grid; place-items: center; flex: none; }
-  .adprize .rico .ic { width: 28px; height: 28px; }
-  .adprize b { display: block; font-size: 17px; line-height: 1.3; }
-  .adprize small { font-size: 13.5px; font-weight: 600; color: #5b6880; }
+  .sp .sp-spark { position: absolute; top: -16px; right: 10px; width: 22px; height: 22px; transform: rotate(-70deg); }
+  .sp .sp-logo {
+    width: 58px; height: 58px; border-radius: 18px; flex: none; font-size: 12px; transform: rotate(-5deg);
+    border: 2.5px solid var(--navy); box-shadow: 0 3px 0 rgba(19, 40, 75, .18);
+  }
+  .sp .sp-t { flex: 1; min-width: 0; }
+  .sp .sp-t b { display: block; font-size: 17px; font-weight: 800; line-height: 1.25; }
+  .sp .sp-t small { display: block; font-size: 13px; font-weight: 600; color: #5b6880; line-height: 1.35; }
+  .sp .sp-cta {
+    flex: none; display: flex; align-items: center; gap: 4px; height: 36px; padding: 3px 10px 0 14px; border-radius: 18px;
+    background: var(--yellow); border: 2px solid var(--navy); font-size: 14.5px; font-weight: 800; box-shadow: 0 2px 0 var(--navy);
+  }
+  .sp .sp-cta .ic { width: 16px; height: 16px; stroke-width: 3; margin-top: -3px; }
+  /* Slim: a thin strip between the question and the points; no button, the whole strip is the link */
+  .sp.slim { margin-top: 14px; padding: 7px 10px 7px 12px; gap: 10px; border-radius: 18px; }
+  .sp.slim .sp-logo { width: 34px; height: 34px; border-radius: 11px; font-size: 9.5px; border-width: 2px; box-shadow: none; }
+  .sp.slim .sp-t { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; overflow: hidden; }
+  .sp.slim .sp-t b { font-size: 15px; }
+  .sp.slim .sp-t small { font-size: 12.5px; overflow: hidden; text-overflow: ellipsis; }
+  .sp.slim .sp-tag { position: static; transform: none; height: 20px; font-size: 10.5px; padding: 2px 8px 0; box-shadow: none; flex: none; }
+  .sp.slim .sp-go { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--yellow); border: 2px solid var(--navy); display: grid; place-items: center; }
+  .sp.slim .sp-go .ic { width: 14px; height: 14px; stroke-width: 3; }
+  .sp.slim + .answer { margin-top: 14px; }
 
-  /* Interstitial between games */
-  .inter .adbar { justify-content: space-between; }
-  .inter .skip {
-    height: 36px; padding: 3px 16px 0; border-radius: 18px; background: rgba(255,255,255,.92); color: var(--navy);
-    font-size: 15px; font-weight: 800; display: flex; align-items: center; gap: 6px;
+  /* ----- Lobby ----- */
+  .lb-code { margin-top: 8px; padding: 12px 14px 12px; text-align: center; }
+  .lb-code small { display: block; font-size: 14px; font-weight: 700; color: #5b6880; }
+  .lb-code .digits { display: flex; justify-content: center; gap: 7px; direction: ltr; margin: 6px 0 10px; }
+  .lb-code .digits i {
+    width: 40px; height: 46px; border-radius: 11px; border: 2.2px solid var(--blue); background: #fff8f1;
+    display: grid; place-items: center; font-style: normal; font-size: 26px; font-weight: 800; padding-top: 4px;
   }
-  .inter .skip .ic { width: 18px; height: 18px; stroke-width: 2.6; margin-top: -2px; }
-  .inter .cta {
-    position: absolute; z-index: 5; left: 22px; right: 22px; bottom: 40px; height: 50px; border-radius: 25px;
-    background: #fff; color: #0f1a2c; display: grid; place-items: center; font-size: 19px; font-weight: 800; padding-top: 3px;
-  }
-  .inter .why {
-    position: absolute; z-index: 5; left: 22px; right: 22px; bottom: 100px; text-align: center; font-size: 13px; font-weight: 600; color: #aab6cc;
-  }
+  .lb-code .row { display: flex; justify-content: center; gap: 8px; }
+  .lb-code .chip { box-shadow: none; background: #f1e4d3; }
+  .lb-players { margin-top: 12px; padding: 4px 14px; }
+  .lb-players h4 { font-size: 16px; font-weight: 800; color: #5b6880; padding: 6px 4px 0; display: flex; justify-content: space-between; }
+  .lb-players .host { font-size: 12px; font-weight: 800; background: var(--yellow); border-radius: 8px; padding: 2px 8px 0; }
+  .lb-players .empty .crop { background: #efe3d3 !important; border: 2px dashed #cdb89f; box-shadow: none; }
+  .lb-players .empty .name { color: #a39282; font-weight: 700; }
+  .lb-players .brow { height: 44px; }
+  .lb-wait { position: absolute; left: 0; right: 0; bottom: 30px; justify-content: center; }
 
-  /* Ad inside the Power Up drawer: shown first, the cards come after the countdown */
-  .pu-adbox { display: none; padding: 10px 14px; text-align: center; }
-  .pu-ad:not(.ad-done) .pu-adbox { display: block; }
-  .pu-ad:not(.ad-done) .pu-list { display: none; }
-  .pu-adbox .ad-tag { margin-bottom: 8px; }
-  .pu-adbox .ad-ph { height: 300px; border-radius: 22px; font-size: 17px; box-shadow: var(--shadow); }
-  .pu-adbox .ad-ph span { display: block; font-size: 12px; font-weight: 600; margin-top: 4px; }
-  .pu-adbox .prog { height: 6px; border-radius: 3px; background: rgba(19, 40, 75, .12); margin-top: 14px; overflow: hidden; }
-  .pu-adbox .prog i { display: block; height: 100%; width: 0; background: var(--yellow); border-radius: 3px; }
-  .pu-adbox .prog i.run { width: 100%; transition: width 5s linear; }
-  .pu-adbox .wait { margin-top: 8px; font-size: 15px; font-weight: 800; line-height: 1.35; }
-  .pu-adbox .wait small { display: block; font-size: 12.5px; font-weight: 600; color: #5b6880; }
+  /* ----- Spectator ----- */
+  .sp-badge { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
+  .sp-badge .chip.watch { background: var(--navy); color: #fff; }
+  .sp-badge .chip.watch .ic { color: var(--yellow); }
+  .sp-q { margin-top: 26px; font-size: 23px; padding: 22px 16px 16px; }
+  .sp-status .brow .st { font-size: 14px; font-weight: 800; padding: 3px 10px 0; border-radius: 10px; }
+  .sp-status .brow .st.done { background: #d6f5e5; color: #138a52; }
+  .sp-status .brow .st.think { background: #f1e4d3; color: #8a7a66; }
 
-  /* Native ad card inside Stats */
-  .native { margin-top: 12px; padding: 12px 14px; display: flex; gap: 12px; align-items: center; position: relative; }
-  .native .ad-tag { position: absolute; top: 10px; left: 12px; }
-  .native .nlogo { width: 62px; height: 62px; border-radius: 18px; flex: none; font-size: 13px; }
-  .native .ntext { flex: 1; min-width: 0; }
-  .native b { display: block; font-size: 17px; line-height: 1.3; }
-  .native p { font-size: 13.5px; font-weight: 600; color: #5b6880; line-height: 1.35; }
-  .native .btn-blue { height: 34px; padding: 3px 14px 0; font-size: 15px; margin-top: 6px; width: max-content; }
+  /* ----- Puzzle level complete ----- */
+  .lv-done { margin-top: 4px; text-align: center; }
+  .lv-done .ttl { height: 52px; font-size: 34px; }
+  .lv-stars { display: flex; justify-content: center; align-items: flex-end; gap: 6px; margin-top: 10px; }
+  .lv-stars svg { width: 64px; height: 64px; filter: drop-shadow(0 3px 0 rgba(19, 40, 75, .2)); }
+  .lv-stars svg:nth-child(2) { width: 86px; height: 86px; }
+  .lv-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 16px; }
+  .lv-stats .kpi b { font-size: 24px; }
+  .lv-stats .kpi span { font-size: 12.5px; }
 </style>
 </head>
 <body>
@@ -692,6 +670,8 @@
   <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="pair" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.2"/><circle cx="16.5" cy="9" r="2.8"/><path d="M2.5 20v-.5A5.5 5.5 0 0 1 8 14a5.5 5.5 0 0 1 5.5 5.5v.5"/><path d="M15 14.2a4.8 4.8 0 0 1 6.5 4.5v.8"/></symbol>
   <symbol id="exit" viewBox="0 0 24 24"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21H13"/><path d="m17 8 4 4-4 4M21 12H10"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z" fill="#ffc61e" stroke="#13284b" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="m8.3 10.8 7.4-4.4M8.3 13.2l7.4 4.4"/></symbol>
   <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8.5-5.2-8.5-11.2A4.8 4.8 0 0 1 12 7a4.8 4.8 0 0 1 8.5 2.8C20.5 15.8 12 21 12 21z" fill="#ee3a2a" stroke="#13284b" stroke-width="1.8" stroke-linejoin="round"/></symbol>
   <symbol id="restart" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></symbol>
   <symbol id="undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></symbol>
@@ -730,7 +710,9 @@
 <section>
 <div class="phone"><div class="screen" id="home-screen">
   <div class="island"></div>
+  <div class="st-top"></div>
   <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <div class="st-scroll">
   <header class="hdr tall">
     <svg class="doodle" style="left:24px;top:74px;width:46px;height:40px" viewBox="0 0 46 40"><path d="M6 8 28 3M8 20l26-8M16 33l18-6"/></svg>
     <svg class="doodle" style="right:22px;top:68px;width:52px;height:50px" viewBox="0 0 52 50"><path d="M48 6C40 4 30 10 32 18s12 6 10-2-14-6-20 4S12 36 6 44"/><path d="M6 44l1-9M6 44l8-3"/></svg>
@@ -756,6 +738,8 @@
       <div class="mode crop src-home" style="--x:562;--y:1012;--w:318;--h:220;--bw:168;--bh:124"><div class="mlabel"><span>فورة مواصلات</span><svg class="ic"><use href="#bus"/></svg></div></div>
       <div class="mode crop src-home" style="--x:202;--y:1012;--w:338;--h:220;--bw:168;--bh:124"><div class="mlabel"><span>من سيربح الفورة</span><svg class="ic"><use href="#crown"/></svg></div></div>
     </div>
+    <div class="sp" data-ad></div>
+  </div>
   </div>
   <nav class="nav">
     <a class="on"><svg class="burst y spark"><use href="#burst"/></svg><svg class="ic"><use href="#pad"/></svg>الألعاب</a>
@@ -764,7 +748,7 @@
     <a><svg class="ic"><use href="#gear"/></svg>الإعدادات</a>
   </nav>
 </div></div>
-<p class="cap">01 · Home</p>
+<p class="cap">01 · Home (scroll for the ad)</p>
 </section>
 
 <!-- ================= 2. Mode popup (over Home) ================= -->
@@ -817,6 +801,7 @@
       <svg class="burst y" style="position:absolute;top:-30px;right:14px;transform:rotate(-60deg)"><use href="#burst"/></svg>
       من مؤسس المصباح الكهربائي؟
     </div>
+    <div class="sp slim" data-ad></div>
     <div class="answer"><span class="caret"></span>Answer Here...</div>
     <div class="card points"><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span></div>
   </div>
@@ -956,6 +941,7 @@
       <div class="ttl"><svg class="burst y flip"><use href="#burst"/></svg><span>سؤال الفورة</span><svg class="burst y"><use href="#burst"/></svg></div>
       <small>(The last dance)</small>
     </div>
+    <div class="sp slim" data-ad></div>
 
     <div class="flabel">Difficulty</div>
     <div class="dd open">
@@ -982,7 +968,9 @@
 <section>
 <div class="phone"><div class="screen">
   <div class="island"></div>
+  <div class="st-top"></div>
   <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <div class="st-scroll">
   <header class="hdr">
     <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
     <div class="logo">
@@ -1005,16 +993,20 @@
       <div class="group yellow"><div class="crop src-friends" style="--x:584;--y:946;--w:248;--h:232;--bw:136;--bh:127"></div><div class="gname">العيلة<span class="gadd"><svg class="ic"><use href="#user-plus"/></svg></span></div></div>
       <div class="group blue"><div class="crop src-friends" style="--x:241;--y:946;--w:248;--h:232;--bw:136;--bh:127"></div><div class="gname">الشلة<span class="gadd"><svg class="ic"><use href="#user-plus"/></svg></span></div></div>
     </div>
+    <div class="sp" data-ad></div>
+  </div>
   </div>
 </div></div>
-<p class="cap">04 · Friends</p>
+<p class="cap">04 · Friends (scroll for the ad)</p>
 </section>
 
 <!-- ================= 5. Profile ================= -->
 <section>
 <div class="phone"><div class="screen">
   <div class="island"></div>
+  <div class="st-top"></div>
   <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <div class="st-scroll">
   <header class="hdr">
     <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
     <div class="logo">
@@ -1041,6 +1033,8 @@
       <div class="hrow"><div class="tile crop src-profile" style="--x:721;--y:902;--w:112;--h:88;--bw:62;--bh:50"></div><div class="t"><b>فورة مزاد</b><small>3/12/2026</small></div><svg class="ic play"><use href="#play"/></svg></div>
       <div class="hrow"><div class="tile crop src-profile" style="--x:721;--y:1035;--w:112;--h:88;--bw:62;--bh:50"></div><div class="t"><b>فورة مواصلات</b><small>2/12/2026</small></div><svg class="ic play"><use href="#play"/></svg></div>
     </div>
+    <div class="sp" data-ad></div>
+  </div>
   </div>
   <nav class="nav nav-3">
     <a class="on"><svg class="ic"><use href="#user"/></svg>حسابي</a>
@@ -1048,7 +1042,7 @@
     <a><svg class="ic"><use href="#gear"/></svg>الإعدادات</a>
   </nav>
 </div></div>
-<p class="cap">05 · Profile</p>
+<p class="cap">05 · Profile (scroll for the ad)</p>
 </section>
 
 <!-- ================= 5b. Stats (إحصائياتي) ================= -->
@@ -1182,6 +1176,78 @@
 <p class="cap">06 · Settings</p>
 </section>
 
+<p class="gallery-sec">ROOM · LOBBY &amp; SPECTATOR<small>Calm screens where nobody is answering: good homes for the sponsor card.</small></p>
+
+<!-- ================= 11. Lobby: waiting for the host to start ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="ttl"><svg class="burst y flip"><use href="#burst"/></svg><span>الأوضة</span><svg class="ic"><use href="#users"/></svg></div>
+    <div class="card lb-code">
+      <small>كود الأوضة، ابعته لصحابك</small>
+      <div class="digits"><i>4</i><i>8</i><i>2</i><i>9</i><i>1</i><i>7</i></div>
+      <div class="row"><span class="chip"><svg class="ic"><use href="#cards"/></svg>فورة كلاسيك · 10 أسئلة</span><span class="chip"><svg class="ic"><use href="#share"/></svg>شارك</span></div>
+    </div>
+    <div class="card bids lb-players">
+      <h4><span>اللعيبة</span><span>4 من 6</span></h4>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:438;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Hazem</span><span class="host">HOST</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:551;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Omar</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:327;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Ammar</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:589;--y:950;--w:104;--h:104;--bw:38;--bh:38"></div><span class="name">Ahmed</span></div>
+      <div class="brow empty"><div class="crop round" style="width:38px;height:38px"></div><span class="name" dir="rtl">مستنيين حد كمان…</span></div>
+    </div>
+    <div class="sp" data-ad></div>
+  </div>
+  <div class="typing lb-wait"><span>مستنيين Hazem يبدأ الفورة</span><span class="dots"><i></i><i></i><i></i></span></div>
+</div></div>
+<p class="cap">11 · Lobby (waiting for the host)</p>
+</section>
+
+<!-- ================= 11a. Spectator ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="sp-badge"><span class="chip watch"><svg class="ic"><use href="#eye"/></svg>إنت بتتفرج</span><span class="chip">12 متفرج</span></div>
+    <div class="card qcard sp-q">
+      <span class="qbadge">Q3</span>
+      <svg class="burst y" style="position:absolute;top:-30px;right:14px;transform:rotate(-60deg)"><use href="#burst"/></svg>
+      مين غنّى «تملي معاك»؟
+    </div>
+    <div class="card bids sp-status">
+      <h4>اللعيبة</h4>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:438;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Hazem</span><span class="st done">جاوب</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:551;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Omar</span><span class="st done">جاوب</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:237;--y:327;--w:100;--h:100;--bw:38;--bh:38"></div><span class="name">Ammar</span><span class="st think">بيفكر…</span></div>
+      <div class="brow"><div class="crop round src-friends" style="--x:589;--y:950;--w:104;--h:104;--bw:38;--bh:38"></div><span class="name">Ahmed</span><span class="st think">بيفكر…</span></div>
+    </div>
+    <div class="sp" data-ad data-line="إعلانات المتفرجين بتختفي مع Premium"></div>
+  </div>
+</div></div>
+<p class="cap">11a · Spectator</p>
+</section>
+
 <p class="gallery-sec">فورة مزاد · AUCTION FLOW<small>Bid on the category, the highest bidder answers alone, the host marks it.</small></p>
 
 <!-- ================= 8. Auction: bid on the category ================= -->
@@ -1206,6 +1272,7 @@
       <b>سينما مصرية التسعينات</b>
       <span class="hidden-q"><svg class="ic"><use href="#lock"/></svg>السؤال هيظهر للي يكسب المزاد بس</span>
     </div>
+    <div class="sp slim" data-ad></div>
 
     <div class="au-meta">
       <span class="chip"><svg class="ic"><use href="#coins"/></svg>رصيدك 2,400</span>
@@ -1284,6 +1351,7 @@
       <span class="amt"><svg class="ic"><use href="#gavel"/></svg>700</span>
     </div>
     <div class="card au-q"><small>سينما مصرية التسعينات</small>مين بطل فيلم «إسماعيلية رايح جاي» سنة 1997؟</div>
+    <div class="sp" data-ad data-line="اتفرج عليه وإنت مستني دورك"></div>
     <div class="typing"><span>Omar بيجاوب دلوقتي</span><span class="dots"><i></i><i></i><i></i></span><span class="chip time"><svg class="ic"><use href="#clock"/></svg>0:18</span></div>
     <div class="card bids">
       <h4>المزايدات</h4>
@@ -1319,6 +1387,7 @@
       <small>السؤال 5 من 10 · على <b style="display:inline;font-size:inherit">1,000</b> نقطة</small>
       <b>أنهي فيلم من دول بطولة أحمد زكي؟</b>
     </div>
+    <div class="sp slim" data-ad></div>
     <div class="lifelines">
       <div class="ll" data-ll="5050"><span class="c">50:50</span>شيل اتنين</div>
       <div class="ll"><span class="c"><svg class="ic"><use href="#users"/></svg></span>اسأل صاحبك</div>
@@ -1395,6 +1464,7 @@
       <div class="t"><b>Omar على الكرسي</b><small>اختار <b style="display:inline;font-size:inherit">ب</b> · مستني الهوست يكشف <span class="typing" style="display:inline-flex;margin:0;vertical-align:middle"><span class="dots"><i></i><i></i><i></i></span></span></small></div>
     </div>
     <div class="card ml-mini"><small>السؤال 5 من 10</small>أنهي فيلم من دول بطولة أحمد زكي؟</div>
+    <div class="sp" data-ad data-line="اتفرج عليه وإنت مستني دورك"></div>
     <div class="card ladder">
       <div class="st safe"><em>10</em><b>32,000</b></div>
       <div class="st"><em>9</em><b>16,000</b></div>
@@ -1529,24 +1599,17 @@
       <div class="piece" data-shape="bb|bb"></div>
     </div>
   </div>
-  <div class="bk-ad">
-    <span class="ad-tag">إعلان</span>
-    <div class="nlogo ad-ph">لوجو</div>
-    <div class="t"><b>اسم البراند</b><small>جملة إعلان قصيرة</small></div>
-    <span class="btn-blue">نزّل</span>
-  </div>
 </div></div>
 <p class="cap">10b · Colored blocks (tap a piece to pick it)</p>
 </section>
 
-<p class="gallery-sec">ADS · PROPOSAL<small>Ideas to discuss, not approved. No ads on any screen with a timer.</small></p>
-
-<!-- ================= 7. Game over + rewarded-ad offer ================= -->
+<!-- ================= 10c. Puzzle level complete ================= -->
 <section>
 <div class="phone"><div class="screen">
   <div class="island"></div>
   <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
   <header class="hdr">
+    <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
     <div class="logo">
       <svg class="burst y flip"><use href="#burst"/></svg>
       <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
@@ -1555,151 +1618,42 @@
     <svg class="wave"><use href="#wave"/></svg>
   </header>
   <div class="body">
-    <div class="ttl go-title"><svg class="burst r flip"><use href="#burst"/></svg><span>الفورة خلصت!</span><svg class="ic"><use href="#crown"/></svg></div>
-    <div class="card standings">
-      <div class="srow2 win"><span class="rank">1</span><span class="name">Omar</span><span class="pts">3,400</span></div>
-      <div class="srow2"><span class="rank">2</span><span class="name">Ammar</span><span class="pts">2,900</span></div>
-      <div class="srow2"><span class="rank">3</span><span class="name">Hazem</span><span class="pts">1,700</span></div>
-      <div class="srow2"><span class="rank">4</span><span class="name">Ahmed</span><span class="pts">900</span></div>
+    <div class="lv-done">
+      <div class="ttl"><svg class="burst r flip"><use href="#burst"/></svg><span>مرحلة 1 خلصت!</span><svg class="burst r"><use href="#burst"/></svg></div>
+      <div class="lv-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
     </div>
-
-    <!-- Rewarded ad: the player chooses to watch -->
-    <div class="card reward">
-      <div class="rtop">
-        <span class="rico"><svg class="ic"><use href="#gift"/></svg></span>
-        <div><b>جرّب كاتيجوري «أفلام عربي» ببلاش</b><p>اتفرج على إعلان قصير (15 ثانية) وافتحها لفورتك الجاية</p></div>
-      </div>
-      <div class="btn-blue"><svg class="ic"><use href="#tv-play"/></svg><span>اتفرج وافتحها</span></div>
-      <p class="fine">اختياري · مش بيأثر على نقطك</p>
+    <div class="lv-stats">
+      <div class="card kpi"><b>0:42</b><span>الوقت</span></div>
+      <div class="card kpi"><b>11</b><span>سهم</span></div>
+      <div class="card kpi"><b>3/3</b><span>القلوب</span></div>
     </div>
-
-    <div class="go-btns">
-      <div class="btn-red"><span>العب تاني</span></div>
-      <div class="btn-ghost">الرئيسية</div>
-    </div>
+    <div class="sp" data-ad></div>
   </div>
+  <div class="submit"><svg class="burst y flip"><use href="#burst"/></svg><span class="btn-blue"><span>المرحلة اللي بعدها</span></span><svg class="burst y"><use href="#burst"/></svg></div>
 </div></div>
-<p class="cap">07 · Game over + rewarded-ad offer</p>
+<p class="cap">10c · Level complete (between levels)</p>
 </section>
-
-<!-- ================= 7a. Rewarded ad playing ================= -->
-<section>
-<div class="phone"><div class="screen">
-  <div class="island"></div>
-  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
-  <div class="adfull">
-    <div class="ad-ph"><div>فيديو الإعلان<span>(Ad video, 15 sec)</span></div></div>
-    <div class="adbar">
-      <span class="xoff"><svg class="ic"><use href="#x"/></svg></span>
-      <div class="prog"><i></i></div>
-      <span class="count">المكافأة بعد 9 ث</span>
-    </div>
-    <span class="ad-tag">إعلان</span>
-    <div class="adprize">
-      <span class="rico"><svg class="ic"><use href="#gift"/></svg></span>
-      <div><b>«أفلام عربي» مفتوحة لفورة واحدة</b><small>كمّل الفيديو وهتتفتح لك على طول</small></div>
-    </div>
-  </div>
-</div></div>
-<p class="cap">07a · Rewarded ad playing</p>
-</section>
-
-<!-- ================= 7b. Interstitial between games ================= -->
-<section>
-<div class="phone"><div class="screen">
-  <div class="island"></div>
-  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
-  <div class="adfull inter">
-    <div class="ad-ph"><div>إعلان بيملا الشاشة<span>(Interstitial: image or video)</span></div></div>
-    <div class="adbar">
-      <span class="skip"><span>تخطّي</span><svg class="ic"><use href="#skip"/></svg></span>
-      <span class="ad-tag" style="position:static;background:rgba(255,255,255,.18);color:#fff">إعلان</span>
-    </div>
-    <p class="why">بيظهر وإنت راجع للرئيسية بس، مرة كل 3 فورات.<br>مع Premium مفيش إعلانات خالص.</p>
-    <div class="cta">اعرف أكتر</div>
-  </div>
-</div></div>
-<p class="cap">07b · Interstitial (between games)</p>
-</section>
-
-<!-- ================= 7c. Ad when the player pulls Power Up ================= -->
-<section>
-<div class="phone"><div class="screen pu-open pu-ad" data-clone="question-screen" data-pu-ad></div></div>
-<p class="cap">07c · Pull Power Up → ad, then the cards</p>
-</section>
-
-<template id="pu-ad">
-  <div class="pu-adbox">
-    <span class="ad-tag">إعلان</span>
-    <div class="ad-ph"><div>مساحة الإعلان<span>(Ad, 5 sec)</span></div></div>
-    <div class="prog"><i></i></div>
-    <p class="wait">الكروت هتظهر بعد <b class="sec">5</b> ث<small>مع Premium الكروت بتظهر على طول</small></p>
-  </div>
-</template>
-
-<!-- ================= 7d. Native ad card in Stats ================= -->
-<section>
-<div class="phone"><div class="screen" data-clone="stats-screen" data-native-ad></div></div>
-<p class="cap">07d · Native ad card in Stats</p>
-</section>
-
-<template id="native-ad">
-  <div class="card native">
-    <span class="ad-tag">إعلان</span>
-    <div class="nlogo ad-ph">لوجو</div>
-    <div class="ntext">
-      <b>اسم البراند</b>
-      <p>جملة إعلان قصيرة بنفس شكل كروت الـ app</p>
-      <div class="btn-blue">اعرف أكتر</div>
-    </div>
-  </div>
-</template>
 
 </main>
 
 <script>
+  // Ads: every slot is the same sponsor card. Full (.sp) on calm screens, slim (.sp.slim) between a question and
+  // its points. Optional data-title / data-line change the copy per slot. Runs first so cloned screens copy it.
+  document.querySelectorAll('[data-ad]').forEach(function (ad) {
+    var title = ad.dataset.title || 'اسم البراند';
+    var line = ad.dataset.line || 'جملة قصيرة ولذيذة عن العرض';
+    ad.innerHTML = ad.classList.contains('slim')
+      ? '<div class="sp-logo ad-ph">لوجو</div><div class="sp-t"><b>' + title + '</b><small>' + line + '</small></div>' +
+        '<span class="sp-tag">إعلان</span><span class="sp-go"><svg class="ic"><use href="#chev-l"/></svg></span>'
+      : '<span class="sp-tag">إعلان</span><svg class="burst y sp-spark"><use href="#burst"/></svg>' +
+        '<div class="sp-logo ad-ph">لوجو</div><div class="sp-t"><b>' + title + '</b><small>' + line + '</small></div>' +
+        '<span class="sp-cta">شوف<svg class="ic"><use href="#chev-l"/></svg></span>';
+  });
+
   // The popup screen sits on top of the Home screen: copy Home's markup underneath it.
   document.querySelectorAll('[data-clone]').forEach(function (el) {
     var src = document.getElementById(el.dataset.clone);
     el.insertAdjacentHTML('afterbegin', src.innerHTML);
-  });
-
-  // Ads proposal: drop the native ad card into the cloned Stats screen, under the headline numbers.
-  document.querySelectorAll('[data-native-ad] .kpis').forEach(function (k) {
-    k.insertAdjacentHTML('afterend', document.getElementById('native-ad').innerHTML);
-  });
-
-  // Ads proposal: pulling Power Up shows a 5-second ad in the drawer, then the cards.
-  // The gallery shows it open on the ad; the countdown runs each time the drawer is opened.
-  document.querySelectorAll('[data-pu-ad]').forEach(function (screen) {
-    screen.querySelector('.pu-hdr').insertAdjacentHTML('afterend', document.getElementById('pu-ad').innerHTML);
-    var bar = screen.querySelector('.pu-adbox .prog i');
-    var sec = screen.querySelector('.pu-adbox .sec');
-    var timer = null;
-    function reset() {
-      clearInterval(timer);
-      screen.classList.remove('ad-done');
-      bar.classList.remove('run');
-      sec.textContent = '5';
-    }
-    function play() {
-      reset();
-      void bar.offsetWidth;                       // restart the bar animation
-      bar.classList.add('run');
-      var left = 5;
-      timer = setInterval(function () {
-        left -= 1;
-        sec.textContent = String(left);
-        if (left <= 0) { clearInterval(timer); screen.classList.add('ad-done'); }
-      }, 1000);
-    }
-    var wasOpen = screen.classList.contains('pu-open');
-    new MutationObserver(function () {
-      var open = screen.classList.contains('pu-open');
-      if (open && !wasOpen) play();
-      if (!open && wasOpen) reset();
-      wasOpen = open;
-    }).observe(screen, { attributes: true, attributeFilter: ['class'] });
   });
 
   // Stats line chart: points per game, with the average as a dashed reference line and a hover tooltip.
