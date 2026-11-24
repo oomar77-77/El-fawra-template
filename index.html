@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Fowra — refined screens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ----- Friends ----- */
+  .frow { display: flex; align-items: center; gap: 14px; height: 70px; direction: ltr; border-bottom: 1px solid var(--line); }
+  .frow:last-child { border-bottom: 0; }
+  .frow .name { flex: 1; font-size: 25px; font-weight: 800; padding-top: 4px; }
+  .invite { width: 102px; height: 36px; font-size: 20px; direction: rtl; padding-top: 3px; }
+  .invite .ic { width: 22px; height: 22px; stroke-width: 1.8; margin-top: -3px; }
+  .groups { display: flex; gap: 14px; margin-top: 16px; }
+  .group {
+    flex: 1; height: 212px; border-radius: 28px; border: 3px solid var(--navy); box-shadow: 0 0 0 3px #fff inset;
+    display: flex; flex-direction: column; align-items: center; padding-top: 8px; position: relative;
+  }
+  .group.blue { background: linear-gradient(180deg, #2ba3f0, #1a86dc); }
+  .group.yellow { background: linear-gradient(180deg, #ffd23a, #f8bd10); }
+  .gname {
+    position: absolute; left: 8px; right: 8px; bottom: 8px; height: 44px; border-radius: 22px; background: var(--card);
+    display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800; padding: 4px 0 0 40px;
+  }
+  .gadd {
+    position: absolute; left: -3px; top: -3px; width: 50px; height: 50px; border-radius: 50%;
+    background: #fff; border: 2.5px solid var(--blue); color: var(--blue); display: grid; place-items: center;
+  }
+  .gadd .ic { width: 26px; height: 26px; stroke-width: 1.8; }
+
+  /* ----- Home ----- */
+  .code { margin-top: 10px; padding: 12px 18px 16px; position: relative; text-align: center; }
+  .code h3 { font-size: 28px; font-weight: 800; line-height: 1.3; display: inline-flex; align-items: center; gap: 6px; }
+  .boxes { display: flex; gap: 7px; justify-content: center; direction: ltr; margin: 8px 0 12px; }
+  .boxes i { width: 42px; height: 46px; border: 2.2px solid var(--blue); border-radius: 11px; background: #fff8f1; }
+  .btn-red {
+    height: 46px; border-radius: 23px; background: linear-gradient(180deg, #f5513f, #e23222); color: #fff;
+    display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 22px; font-weight: 800; padding-top: 3px;
+    box-shadow: 0 4px 10px rgba(226, 50, 34, .3);
+  }
+  .btn-red .ic { width: 28px; height: 28px; stroke-width: 1.8; margin-top: -3px; }
+  .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .mode { position: relative; border-radius: 22px; overflow: hidden; box-shadow: 0 6px 14px rgba(120, 78, 40, .16); }
+  .mlabel { white-space: nowrap;
+    position: absolute; left: 5px; right: 5px; bottom: 5px; height: 42px; border-radius: 21px; background: var(--card);
+    display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 19px; font-weight: 800; padding-top: 3px;
+    box-shadow: 0 2px 6px rgba(80, 50, 20, .15);
+  }
+  .mlabel .ic { width: 24px; height: 24px; color: var(--red); stroke-width: 2; margin-top: -3px; }
+  .nav .spark { position: absolute; top: -6px; left: 4px; width: 22px; height: 22px; transform: rotate(-30deg); }
+
+  /* ----- Modal ----- */
+  .dim { position: absolute; inset: 0; background: rgba(14, 34, 58, .58); z-index: 40; }
+  .modal {
+    position: absolute; z-index: 41; left: 12px; right: 12px; top: 226px; border-radius: 30px; overflow: hidden;
+    background: var(--cream); box-shadow: 0 20px 50px rgba(0, 0, 0, .35); border: 3px solid #fff;
+  }
+  .mhdr { position: relative; height: 150px; background: linear-gradient(180deg, var(--blue-light), var(--blue)); }
+  .mhdr .wave { position: absolute; left: 0; bottom: -1px; width: 100%; height: 58px; fill: var(--cream); }
+  .mhdr .close { position: absolute; top: 14px; left: 14px; width: 42px; height: 42px; border-radius: 50%; background: #fff; color: var(--navy); display: grid; place-items: center; box-shadow: 0 3px 8px rgba(0,0,0,.2); }
+  .mhdr .close .ic { stroke-width: 3.4; width: 22px; height: 22px; }
+  .mart { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; }
+  .mtitle { position: absolute; bottom: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 4px; }
+  .outlined {
+    font-weight: 800; color: #fff; line-height: 1;
+    text-shadow:
+      3px 0 0 var(--navy), -3px 0 0 var(--navy), 0 3px 0 var(--navy), 0 -3px 0 var(--navy),
+      2px 2px 0 var(--navy), -2px 2px 0 var(--navy), 2px -2px 0 var(--navy), -2px -2px 0 var(--navy),
+      0 5px 0 var(--navy), 3px 5px 0 var(--navy), -3px 5px 0 var(--navy);
+  }
+  .mtitle .outlined { font-size: 46px; padding-top: 10px; }
+  .mtext { padding: 10px 16px 4px; text-align: center; font-size: 16px; font-weight: 700; line-height: 1.6; }
+  .opts { display: flex; gap: 10px; padding: 12px 12px 14px; }
+  .opt { position: relative; border-radius: 22px; overflow: hidden; box-shadow: 0 6px 14px rgba(120, 78, 40, .18); }
+  .olabel {
+    position: absolute; left: 5px; right: 5px; bottom: 5px; height: 58px; border-radius: 22px; background: var(--card);
+    display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 2px 6px rgba(80, 50, 20, .15);
+  }
+  .olabel b { font-size: 20px; font-weight: 800; line-height: 1.05; text-align: center; padding-top: 4px; }
+  .olabel b u { text-decoration: none; display: inline-block; border-bottom: 3px solid var(--red); border-radius: 2px; padding-bottom: 1px; }
+  .olabel .ic { width: 32px; height: 32px; color: var(--red); stroke-width: 1.8; }
+
+  /* ----- Profile ----- */
+  .pcard { margin-top: 12px; padding: 16px 18px; display: flex; align-items: center; gap: 16px; }
+  .pinfo { flex: 1; direction: ltr; text-align: left; }
+  .pinfo .pname { font-size: 42px; font-weight: 800; line-height: 1; padding-top: 6px; }
+  .pinfo .mail { font-size: 17px; font-weight: 600; margin-top: 2px; }
+  .meta { display: flex; direction: rtl; justify-content: center; align-items: center; margin-top: 8px; font-size: 18px; font-weight: 700; }
+  .meta span { display: flex; align-items: center; gap: 5px; padding: 0 9px; white-space: nowrap; }
+  .meta span + span { border-right: 1px solid var(--line); }
+  .meta .ic { color: var(--red); width: 22px; height: 22px; margin-top: -3px; }
+  .vdiv { width: 1px; align-self: stretch; background: var(--line); margin: 6px 0; }
+  .avatar { position: relative; flex: none; width: 124px; height: 124px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 6px 14px rgba(120, 78, 40, .2); }
+  .avatar .crop { border-radius: 50%; }
+  .avatar .edit { position: absolute; right: -4px; bottom: -2px; width: 40px; height: 40px; border-radius: 50%; border: 3px solid #fff; color: #fff; }
+  .avatar .edit .ic { width: 18px; height: 18px; }
+  .hist { margin-top: 6px; padding: 4px 16px; }
+  .hrow { display: flex; align-items: center; gap: 14px; height: 76px; border-bottom: 1px solid var(--line); }
+  .hrow:last-child { border-bottom: 0; }
+  .hrow .tile { border-radius: 16px; box-shadow: 0 3px 8px rgba(120, 78, 40, .18); }
+  .hrow .t { flex: 1; }
+  .hrow .t b { display: block; font-size: 23px; font-weight: 800; line-height: 1.1; padding-top: 4px; }
+  .hrow .t small { display: block; direction: ltr; text-align: right; font-size: 18px; font-weight: 600; color: #3d4c66; }
+  .hrow .play { color: var(--blue); width: 36px; height: 36px; stroke-width: 1.8; }
+
+  /* ----- Question ----- */
+  .qcard { position: relative; margin-top: 30px; padding: 26px 18px 22px; text-align: center; font-size: 29px; font-weight: 800; line-height: 1.4; }
+  .qbadge {
+    position: absolute; top: -26px; left: -10px; width: 56px; height: 56px; border-radius: 50%;
+    background: var(--yellow); border: 3px solid var(--navy); display: grid; place-items: center;
+    font-size: 23px; font-weight: 800; direction: ltr; padding-top: 4px;
+  }
+  .qbadge::after {
+    content: ""; position: absolute; bottom: -9px; left: 14px; width: 14px; height: 14px; background: var(--yellow);
+    border-left: 3px solid var(--navy); border-bottom: 3px solid var(--navy); transform: skewY(-30deg) rotate(-20deg);
+  }
+  .answer {
+    margin-top: 26px; height: 60px; border-radius: 30px; background: var(--card); direction: ltr;
+    box-shadow: 0 2px 6px rgba(120, 78, 40, .12) inset, 0 1px 0 #fff; display: flex; align-items: center; gap: 10px; padding: 0 24px;
+    font-size: 22px; font-weight: 600; color: #9aa3b3;
+  }
+  .answer .caret { width: 3px; height: 28px; background: var(--navy); border-radius: 2px; }
+  .points { margin-top: 18px; padding: 20px 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 14px; direction: ltr; }
+  .points span {
+    height: 44px; border-radius: 22px; background: linear-gradient(180deg, #fde4bd, #f8d39b);
+    display: grid; place-items: center; font-size: 25px; font-weight: 800; padding-top: 4px;
+    box-shadow: 0 2px 4px rgba(150, 100, 40, .18);
+  }
+  .power {
+    position: absolute; right: -8px; top: 330px; width: 46px; height: 168px; border-radius: 23px;
+    background: linear-gradient(90deg, #fbe3bd, #f6d39c); border: 2.5px solid var(--navy); z-index: 3;
+    writing-mode: vertical-rl; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 800; direction: ltr; padding-left: 4px;
+  }
+  .submit { position: absolute; left: 0; right: 0; bottom: 92px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .submit .btn-blue { width: 252px; height: 60px; font-size: 27px; font-weight: 800; padding-top: 4px; }
+
+  /* ----- Host review ----- */
+  .qhead { display: flex; direction: ltr; align-items: center; gap: 14px; margin-top: 26px; padding-left: 4px; }
+  .qhead .qbadge { position: relative; top: auto; left: auto; }
+  .qhead .qnext { width: 48px; height: 48px; }
+  .qhead .qnext .ic { width: 26px; height: 26px; stroke-width: 2.8; }
+  .qchat { margin-left: auto; width: 52px; height: 52px; border-radius: 50%; background: var(--card); box-shadow: var(--shadow); display: grid; place-items: center; color: var(--navy); }
+  .qchat .ic { width: 28px; height: 28px; stroke-width: 2.2; }
+  .next-q .btn-blue { width: 270px; }
+  .next-q .btn-blue .ic { width: 28px; height: 28px; stroke-width: 2.8; margin-top: -4px; }
+  .review { margin-top: 18px; padding: 2px 14px; }
+  .rrow { display: flex; align-items: center; gap: 10px; height: 74px; direction: ltr; border-bottom: 1px solid var(--line); }
+  .rrow:last-child { border-bottom: 0; }
+  .rrow .name { width: 80px; font-size: 22px; font-weight: 800; padding-top: 4px; }
+  .rrow .ans { flex: 1; direction: rtl; text-align: right; font-size: 21px; font-weight: 700; color: #3d4c66; padding-top: 4px; }
+  .verdict { width: 40px; height: 40px; flex: none; border-radius: 50%; border: 2.5px solid currentColor; background: #fff; display: grid; place-items: center; }
+  .verdict .ic { width: 22px; height: 22px; stroke-width: 3; }
+  .verdict.no { color: var(--red); }
+  .verdict.yes { color: #1fae6a; }
+
+  /* ----- Question results ----- */
+  .srow2 { display: flex; align-items: center; height: 72px; direction: ltr; border-bottom: 1px solid var(--line); padding: 0 6px; }
+  .srow2:last-child { border-bottom: 0; }
+  .srow2 .name { flex: 1; font-size: 24px; font-weight: 800; padding-top: 4px; }
+  .delta {
+    min-width: 92px; height: 40px; border-radius: 20px; padding: 4px 14px 0; display: grid; place-items: center;
+    font-size: 23px; font-weight: 800; color: #fff;
+  }
+  .delta.up { background: linear-gradient(180deg, #2cc47f, #1fae6a); box-shadow: 0 3px 8px rgba(31, 174, 106, .3); }
+  .delta.down { background: linear-gradient(180deg, #f5513f, #e23222); box-shadow: 0 3px 8px rgba(226, 50, 34, .3); }
+
+  /* ----- Final auction question ----- */
+  .final-ttl { text-align: center; margin-top: 4px; }
+  .final-ttl .ttl { height: 52px; }
+  .final-ttl small { display: block; direction: ltr; font-size: 20px; font-weight: 700; color: #3d4c66; margin-top: -2px; }
+  .flabel { direction: ltr; text-align: left; font-size: 19px; font-weight: 800; margin: 16px 6px 6px; }
+  .dd { position: relative; direction: ltr; }
+  .dd-field {
+    height: 54px; border-radius: 27px; background: var(--card); box-shadow: var(--shadow); cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; padding: 4px 20px 0 24px; font-size: 22px; font-weight: 800;
+  }
+  .dd-field .ic { width: 24px; height: 24px; stroke-width: 2.8; color: var(--blue); margin-top: -4px; transition: transform .2s; }
+  .dd.open .dd-field .ic { transform: rotate(180deg); }
+  .dd-menu { display: none; margin-top: 8px; padding: 6px; border-radius: 22px; background: var(--card); box-shadow: var(--shadow); }
+  .dd.open .dd-menu { display: block; }
+  .dd-menu div {
+    height: 42px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between;
+    padding: 4px 16px 0; font-size: 20px; font-weight: 700; cursor: pointer;
+  }
+  .dd-menu div.on { background: var(--yellow); font-weight: 800; }
+  .dd-menu div .ic { width: 20px; height: 20px; stroke-width: 3; display: none; margin-top: -4px; }
+  .dd-menu div.on .ic { display: block; }
+  .picker { position: relative; height: 176px; padding: 0 14px; direction: ltr; overflow: hidden; }
+  .picker .band {
+    position: absolute; left: 14px; right: 14px; top: 66px; height: 44px; border-radius: 22px;
+    background: linear-gradient(180deg, #fde4bd, #f8d39b); border: 2.5px solid var(--navy); pointer-events: none;
+  }
+  .wheel {
+    position: relative; height: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(transparent, #000 35%, #000 65%, transparent);
+            mask-image: linear-gradient(transparent, #000 35%, #000 65%, transparent);
+  }
+  .wheel::-webkit-scrollbar { display: none; }
+  .wheel span {
+    display: grid; place-items: center; height: 44px; scroll-snap-align: center; padding-top: 4px;
+    font-size: 22px; font-weight: 700; color: #8a93a6; transition: font-size .15s, color .15s;
+  }
+  .wheel span:first-child { margin-top: 66px; }
+  .wheel span:last-child { margin-bottom: 66px; }
+  .wheel span.on { font-size: 30px; font-weight: 800; color: var(--navy); }
+
+  /* ----- Stats (إحصائياتي) ----- */
+  .st-scroll { position: absolute; inset: 0; overflow-y: auto; scrollbar-width: none; padding-bottom: 116px; }
+  .st-scroll::-webkit-scrollbar { display: none; }
+  .st-top { position: absolute; z-index: 50; top: 0; left: 0; right: 0; height: 54px; background: var(--blue-light); }
+  .kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+  .kpi { padding: 12px 14px 10px; text-align: center; }
+  .kpi b { display: block; font-size: 32px; font-weight: 800; line-height: 1.05; direction: ltr; padding-top: 4px; }
+  .kpi span { display: block; white-space: nowrap; font-size: 13.5px; font-weight: 700; color: #3d4c66; }
+  .st-card { margin-top: 12px; padding: 14px 16px 12px; position: relative; }
+  .st-card h4 { font-size: 19px; font-weight: 800; line-height: 1.3; }
+  .st-card .sub { font-size: 14px; font-weight: 600; color: #5b6880; line-height: 1.4; }
+  .st-card .sub b { color: var(--navy); }
+  .linechart { display: block; width: 100%; height: 140px; margin-top: 6px; overflow: visible; direction: ltr; }
+  .linechart text { font: 700 11px var(--font); fill: #5b6880; }
+  .hbars { margin-top: 8px; display: grid; gap: 9px; }
+  .hbar { display: grid; grid-template-columns: 62px 1fr 40px; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; }
+  .hbar .track { height: 12px; border-radius: 6px; background: rgba(19, 40, 75, .08); }
+  .hbar .fill { height: 100%; border-radius: 6px; background: var(--blue); }
+  .hbar .v { direction: ltr; text-align: left; color: var(--navy); font-weight: 800; }
+  .wager { display: flex; gap: 10px; margin: 10px 0 8px; }
+  .wager div { flex: 1; border-radius: 18px; padding: 8px 10px 6px; text-align: center; background: #fff8f0; border: 2px solid var(--line); }
+  .wager b { display: block; font-size: 26px; font-weight: 800; line-height: 1.1; padding-top: 3px; }
+  .wager span { font-size: 13px; font-weight: 700; color: #3d4c66; }
+  .wager .ok b { color: #168a54; } .wager .bad b { color: #d02a1b; }
+  .tip-insight { display: flex; gap: 8px; align-items: flex-start; background: #fff3c4; border-radius: 14px; padding: 8px 10px 6px; font-size: 14px; font-weight: 700; line-height: 1.45; }
+  .tip-insight .ic { width: 20px; height: 20px; color: #c98a00; flex: none; margin-top: 1px; }
+  .log { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 16px; }
+  .log th { font-size: 13px; font-weight: 700; color: #5b6880; text-align: right; padding: 4px 4px 6px; border-bottom: 1px solid var(--line); }
+  .log td { padding: 9px 4px 7px; border-bottom: 1px solid var(--line); font-weight: 700; }
+  .log tr:last-child td { border-bottom: 0; }
+  .log td.d { direction: ltr; text-align: left; color: #3d4c66; font-size: 15px; }
+  .log th.d { text-align: left; }
+  .res { display: inline-block; min-width: 46px; text-align: center; border-radius: 12px; padding: 3px 8px 1px; font-size: 14px; font-weight: 800; color: #fff; }
+  .res.win { background: #1fae6a; } .res.loss { background: var(--red); }
+  .chart-tip {
+    position: absolute; z-index: 5; pointer-events: none; background: var(--navy); color: #fff; border-radius: 10px;
+    padding: 5px 9px 3px; font-size: 13px; font-weight: 700; white-space: nowrap; transform: translate(-50%, -110%); display: none;
+  }
+
+  /* ----- Power-ups drawer (pulled from the right edge) ----- */
+  .pu-dim { position: absolute; inset: 0; z-index: 40; background: rgba(14, 34, 58, .58); opacity: 0; pointer-events: none; transition: opacity .35s ease; }
+  .pu-drawer {
+    --pu-w: 212px;
+    position: absolute; z-index: 42; top: 0; bottom: 0; right: 0; width: var(--pu-w); background: var(--cream);
+    border-radius: 34px 0 0 34px; box-shadow: -12px 0 40px rgba(0, 0, 0, 0);
+    transform: translateX(var(--pu-w)); transition: transform .38s cubic-bezier(.22, .9, .3, 1.1), box-shadow .38s;
+    touch-action: none;
+  }
+  .pu-drawer .power { position: absolute; right: auto; left: -40px; top: 330px; cursor: grab; user-select: none; }
+  .pu-open .pu-dim { opacity: 1; pointer-events: auto; }
+  .pu-open .pu-drawer { transform: translateX(0); box-shadow: -12px 0 40px rgba(0, 0, 0, .3); }
+  .pu-drawer.dragging { transition: none; }
+  .pu-inner { height: 100%; border-radius: 34px 0 0 34px; overflow: hidden; }
+  .pu-hdr { position: relative; height: 140px; background: linear-gradient(180deg, var(--blue-light), var(--blue)); }
+  .pu-hdr .wave { position: absolute; left: 0; bottom: -1px; width: 100%; height: 40px; fill: var(--cream); }
+  .pu-hdr .outlined { position: absolute; left: 50px; right: 8px; top: 72px; text-align: center; font-size: 27px; direction: ltr; white-space: nowrap; }
+  .pu-hdr .hdr-btn { top: 68px; width: 40px; height: 40px; }
+  .pu-hdr .hdr-btn.end { left: 12px; }
+  .pu-hdr .hdr-btn .ic { width: 20px; height: 20px; }
+  .pu-list { display: flex; flex-direction: column; gap: 14px; padding: 12px 16px; }
+  .pu-card {
+    position: relative; height: 158px; border-radius: 24px; border: 3px solid var(--navy); box-shadow: 0 0 0 3px #fff inset, 0 6px 14px rgba(120, 78, 40, .2);
+    display: flex; flex-direction: column; align-items: center; overflow: hidden;
+    opacity: 0; transform: translateX(40px) scale(.94); transition: opacity .3s, transform .45s cubic-bezier(.22, .9, .3, 1.2);
+  }
+  .pu-open .pu-card { opacity: 1; transform: none; }
+  .pu-open .pu-card:nth-child(1) { transition-delay: .12s; }
+  .pu-open .pu-card:nth-child(2) { transition-delay: .2s; }
+  .pu-open .pu-card:nth-child(3) { transition-delay: .28s; }
+  .pu-card.yellow { background: radial-gradient(circle at 50% 35%, #ffe07a, #f8bd10 70%); }
+  .pu-card.blue { background: radial-gradient(circle at 50% 35%, #6cc6ff, #1a86dc 70%); }
+  .pu-card.red { background: radial-gradient(circle at 50% 35%, #ff8a73, #e23222 70%); }
+  .pu-art { height: 92px; display: flex; align-items: center; justify-content: center; gap: 2px; }
+  .pu-art .outlined { font-size: 52px; direction: ltr; padding-top: 12px; }
+  .pu-art .big { width: 64px; height: 64px; }
+  .pu-name {
+    position: absolute; left: 7px; right: 7px; bottom: 7px; border-radius: 18px; background: var(--card);
+    text-align: center; padding: 6px 6px 4px; box-shadow: 0 2px 6px rgba(80, 50, 20, .15);
+  }
+  .pu-name b { display: block; direction: ltr; font-size: 20px; font-weight: 800; line-height: 1.1; }
+  .pu-name small { display: block; font-size: 14px; font-weight: 700; color: #3d4c66; line-height: 1.3; }
+
+  /* ----- In-game sidebar ----- */
+  .side {
+    position: absolute; z-index: 41; top: 0; bottom: 0; left: 0; width: 300px; background: var(--cream);
+    border-radius: 0 34px 34px 0; overflow: hidden; box-shadow: 12px 0 40px rgba(0, 0, 0, .3);
+  }
+  .side .hdr { height: 150px; }
+  .side .logo { top: 58px; left: 38%; }
+  .screen .island { z-index: 60; } .screen .status { z-index: 55; }
+  .side .hdr-btn.start { right: 16px; }
+  .side .slist { margin: 4px 16px 0; padding: 4px 16px; }
+  .side .srow { height: 56px; font-size: 22px; }
+  .srow.danger, .srow.danger > .ic:first-child { color: var(--red); }
+
+  /* ----- Settings ----- */
+  .slist { margin-top: 6px; padding: 4px 18px; }
+  .srow { display: flex; align-items: center; gap: 14px; height: 45px; border-bottom: 1px solid var(--line); font-size: 21px; font-weight: 800; }
+  .srow:last-child { border-bottom: 0; }
+  .srow > .ic:first-child { width: 30px; height: 30px; color: #f4b000; stroke-width: 1.9; }
+  .srow span { flex: 1; padding-top: 4px; }
+  .srow .chev { width: 22px; height: 22px; stroke-width: 2.6; }
+  .srow .latin { font-size: 19px; }
+  .toggle { width: 54px; height: 32px; border-radius: 16px; background: linear-gradient(180deg, #2ba3f0, #1580d6); position: relative; }
+  .toggle::after { content: ""; position: absolute; top: 3px; right: 3px; width: 26px; height: 26px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+  .logout {
+    margin-top: 18px; height: 56px; border-radius: 28px; border: 2.5px solid var(--red); color: var(--red);
+    display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 25px; font-weight: 800; padding-top: 3px;
+  }
+  .logout .ic { width: 30px; height: 30px; stroke-width: 2; margin-top: -3px; }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="burst"viewBox="0 0 30 30"><path d="M5 6 13 11M3 15h10M5 24l8-5"/></symbol>
+  <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-.5A6.5 6.5 0 0 1 10.5 14h3a6.5 6.5 0 0 1 6.5 6.5v.5"/></symbol>
+  <symbol id="users" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.2"/><circle cx="5.2" cy="9.5" r="2.4"/><circle cx="18.8" cy="9.5" r="2.4"/><path d="M6.8 20v-1a5.2 5.2 0 0 1 10.4 0v1z"/><path d="M1.8 19.5v-.8A3.6 3.6 0 0 1 5.6 15h.6M22.2 19.5v-.8A3.6 3.6 0 0 0 18.4 15h-.6"/></symbol>
+  <symbol id="user-plus" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21v-.5A6.5 6.5 0 0 1 8.5 14h1a6.5 6.5 0 0 1 4.6 1.9"/><path d="M19 13v7M15.5 16.5h7"/></symbol>
+  <symbol id="gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  <symbol id="pad" viewBox="0 0 24 24"><path d="M7 6h10a5 5 0 0 1 4.9 6l-.8 4a2.6 2.6 0 0 1-4.6 1.1L15 15H9l-1.5 2.1a2.6 2.6 0 0 1-4.6-1.1l-.8-4A5 5 0 0 1 7 6z"/><path d="M6 10.5h4M8 8.5v4"/><circle cx="15.5" cy="9.6" r=".9" fill="currentColor"/><circle cx="17.8" cy="11.8" r=".9" fill="currentColor"/></symbol>
+  <symbol id="bars" viewBox="0 0 24 24"><rect x="3.5" y="11" width="4" height="9" rx="2"/><rect x="10" y="7" width="4" height="13" rx="2"/><rect x="16.5" y="3.5" width="4" height="16.5" rx="2"/></symbol>
+  <symbol id="bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6.5 2.5 8 2.5 8h-17S6 15.5 6 9"/><path d="M10.2 20.5a2 2 0 0 0 3.6 0"/></symbol>
+  <symbol id="volume" viewBox="0 0 24 24"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18.6 6a8.5 8.5 0 0 1 0 12"/></symbol>
+  <symbol id="help" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0-8-4.9L3 21l4.9-1A9 9 0 0 0 12 21z"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.9.7c0 1.7-2.5 2.3-2.5 3.6"/><path d="M12 16.8h.01"/></symbol>
+  <symbol id="file" viewBox="0 0 24 24"><path d="M14 2.5H7A2.5 2.5 0 0 0 4.5 5v14A2.5 2.5 0 0 0 7 21.5h10a2.5 2.5 0 0 0 2.5-2.5V8z"/><path d="M14 2.5V8h5.5M8.5 13h7M8.5 17h5"/></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path d="M12 21.5s7.5-3.5 7.5-9.5V5.5L12 2.5l-7.5 3V12c0 6 7.5 9.5 7.5 9.5z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></symbol>
+  <symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.8 6 3.8 9.5s-1.2 6.7-3.8 9.5c-2.6-2.8-3.8-6-3.8-9.5S9.4 5.3 12 2.5z"/></symbol>
+  <symbol id="moon" viewBox="0 0 24 24"><path d="M20.5 13.5A8.8 8.8 0 1 1 10.5 3.5a7 7 0 0 0 10 10z"/></symbol>
+  <symbol id="enter" viewBox="0 0 24 24"><path d="M14 3h4.5A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5H14"/><path d="m10 16.5 4.5-4.5L10 7.5M14.5 12H3"/></symbol>
+  <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></symbol>
+  <symbol id="chev-r" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="chev-l" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+  <symbol id="chev-d" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.3v7.4l5.8-3.7z" fill="currentColor"/></symbol>
+  <symbol id="calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17M8 14h2M14 14h2M8 17h2"/></symbol>
+  <symbol id="history" viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 4v4.5H8M12 7.5V12l3 2"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="bulb-o" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.8A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.5 11.5h.01M12.5 11.5h.01M16.5 11.5h.01" stroke-width="3"/></symbol>
+  <symbol id="pu-bulb" viewBox="0 0 64 64"><path d="M32 5a19 19 0 0 0-11 34.5c2 1.5 3 3.6 3 6V48h16v-2.5c0-2.4 1-4.5 3-6A19 19 0 0 0 32 5z" fill="#ffd23a" stroke="#13284b" stroke-width="3.5" stroke-linejoin="round"/><rect x="24" y="48" width="16" height="10" rx="3" fill="#fff" stroke="#13284b" stroke-width="3.5"/><path d="M23 21a10 10 0 0 1 8-7" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="pu-watch" viewBox="0 0 64 64"><rect x="26" y="5" width="12" height="7" rx="2.5" fill="#ffc61e" stroke="#13284b" stroke-width="3"/><path d="M32 12v4" stroke="#13284b" stroke-width="3.5"/><circle cx="31" cy="37" r="20" fill="#fff" stroke="#13284b" stroke-width="3.5"/><path d="M31 37V26M31 37l7 5" stroke="#13284b" stroke-width="3.5" stroke-linecap="round" fill="none"/><circle cx="51" cy="18" r="9" fill="#ffc61e" stroke="#13284b" stroke-width="3"/><path d="M51 13.5v9M46.5 18h9" stroke="#13284b" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></symbol>
+  <symbol id="pencil" viewBox="0 0 24 24"><path d="M16.5 3.5a2.4 2.4 0 0 1 3.4 3.4L7.5 19.3 3 21l1.7-4.5z"/></symbol>
+  <symbol id="bus" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="3.5"/><path d="M4 11h16M4 7h16M7.5 18v2.5M16.5 18v2.5"/><circle cx="8" cy="14.5" r="1" fill="currentColor"/><circle cx="16" cy="14.5" r="1" fill="currentColor"/></symbol>
+  <symbol id="gavel" viewBox="0 0 24 24"><path d="m13.5 10.5-8 8a2 2 0 0 1-2.8-2.8l8-8"/><path d="m9.5 6.5 8 8M12.5 3.5l8 8M11 5l7.5 7.5M3 22h10"/></symbol>
+  <symbol id="crown" viewBox="0 0 24 24"><path d="M4 18.5 2.5 7.5l5.5 4L12 4.5l4 7 5.5-4-1.5 11z"/><path d="M4.5 21h15"/></symbol>
+  <symbol id="cards" viewBox="0 0 24 24"><rect x="2.6" y="6" width="10" height="14" rx="2" transform="rotate(-12 7.6 13)"/><rect x="10.4" y="4" width="11" height="15" rx="2" transform="rotate(10 15.9 11.5)"/><path d="M14.6 9.6a1.8 1.8 0 1 1 2.4 1.7c-.6.3-.8.7-.8 1.3M16 15.4h.01" transform="rotate(10 15.9 11.5)"/></symbol>
+  <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="pair" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.2"/><circle cx="16.5" cy="9" r="2.8"/><path d="M2.5 20v-.5A5.5 5.5 0 0 1 8 14a5.5 5.5 0 0 1 5.5 5.5v.5"/><path d="M15 14.2a4.8 4.8 0 0 1 6.5 4.5v.8"/></symbol>
+  <symbol id="exit" viewBox="0 0 24 24"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21H13"/><path d="m17 8 4 4-4 4M21 12H10"/></symbol>
+  <symbol id="mars"viewBox="0 0 24 24"><circle cx="10" cy="14" r="6"/><path d="M14.4 9.6 20.5 3.5M15 3.5h5.5V9"/></symbol>
+
+  <!-- status bar glyphs -->
+  <symbol id="sb-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></symbol>
+  <symbol id="sb-wifi" viewBox="0 0 16 12"><path d="M8 2.2c2.4 0 4.6.9 6.3 2.5l1.2-1.3A10.7 10.7 0 0 0 8 .4 10.7 10.7 0 0 0 .5 3.4l1.2 1.3A9 9 0 0 1 8 2.2zm0 3.6c1.4 0 2.7.5 3.7 1.4l1.3-1.3A7.2 7.2 0 0 0 8 4a7.2 7.2 0 0 0-5 1.9l1.3 1.3c1-.9 2.3-1.4 3.7-1.4zM8 12l2.4-2.5a3.4 3.4 0 0 0-4.8 0z"/></symbol>
+  <symbol id="sb-batt" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="3.2" fill="none" stroke="#fff" opacity=".5"/><rect x="2" y="2" width="20" height="8" rx="2"/><path d="M25 4v4c.8-.3 1.4-1 1.4-2s-.6-1.7-1.4-2z" opacity=".5"/></symbol>
+
+  <!-- header wave -->
+  <symbol id="wave" viewBox="0 0 390 62" preserveAspectRatio="none"><path d="M0 50C60 26 120 18 190 30s150 22 200-22V62H0z"/></symbol>
+  <!-- logo crown -->
+  <symbol id="logo-crown" viewBox="0 0 36 28"><path d="M4 24 2 7l9 7 7-12 7 12 9-7-2 17z" fill="#ee3a2a" stroke="#13284b" stroke-width="2.4" stroke-linejoin="round"/><circle cx="18" cy="17" r="2.2" fill="#ffc61e"/></symbol>
+  <symbol id="logo-uline" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M3 5C30 1 70 1 97 4" fill="none" stroke="#ee3a2a" stroke-width="4" stroke-linecap="round"/></symbol>
+</svg>
+
+<svg class="bg-blob a" viewBox="0 0 200 200"><path d="M45 -10C90 10 70 60 110 85s90 10 90 70-60 90-120 70S-20 160-10 100 0-30 45-10z"/></svg>
+<svg class="bg-blob b" viewBox="0 0 200 200"><path d="M120 0c50 0 80 40 80 90s-20 110-70 100-30-60-70-80S0 60 30 25 70 0 120 0z"/></svg>
+
+<p class="gallery-title">EL FOWRA · REFINED SCREENS · v1</p>
+
+<main class="gallery">
+
+<!-- ================= 1. Home ================= -->
+<section>
+<div class="phone"><div class="screen" id="home-screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr tall">
+    <svg class="doodle" style="left:24px;top:74px;width:46px;height:40px" viewBox="0 0 46 40"><path d="M6 8 28 3M8 20l26-8M16 33l18-6"/></svg>
+    <svg class="doodle" style="right:22px;top:68px;width:52px;height:50px" viewBox="0 0 52 50"><path d="M48 6C40 4 30 10 32 18s12 6 10-2-14-6-20 4S12 36 6 44"/><path d="M6 44l1-9M6 44l8-3"/></svg>
+    <div class="logo lg">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="hl-row"><svg class="burst r flip"><use href="#burst"/></svg><span class="hl">الفورة إيه انهارده؟</span><svg class="burst r"><use href="#burst"/></svg></div>
+    <div class="card code">
+      <h3><svg class="burst r flip" style="width:26px;height:26px;transform:scaleX(-1) rotate(-20deg)"><use href="#burst"/></svg>معاك كود؟</h3>
+      <div class="boxes"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="btn-red"><span>إنضم للفورة</span><svg class="ic"><use href="#enter"/></svg></div>
+      <svg class="burst y" style="position:absolute;right:-14px;bottom:44px;width:24px;height:24px;transform:scaleX(-1)"><use href="#burst"/></svg>
+    </div>
+    <div class="hl-row" style="margin-top:12px"><svg class="burst r flip"><use href="#burst"/></svg><span class="hl">إعمل فورة</span><svg class="burst r"><use href="#burst"/></svg></div>
+    <div class="modes">
+      <div class="mode crop src-home" style="--x:562;--y:768;--w:318;--h:226;--bw:168;--bh:124"><div class="mlabel"><span>فورة كلاسيك</span><svg class="ic"><use href="#cards"/></svg></div></div>
+      <div class="mode crop src-home" style="--x:202;--y:768;--w:338;--h:226;--bw:168;--bh:124"><div class="mlabel"><span>فورة مزاد</span><svg class="ic"><use href="#gavel"/></svg></div></div>
+      <div class="mode crop src-home" style="--x:562;--y:1012;--w:318;--h:220;--bw:168;--bh:124"><div class="mlabel"><span>فورة مواصلات</span><svg class="ic"><use href="#bus"/></svg></div></div>
+      <div class="mode crop src-home" style="--x:202;--y:1012;--w:338;--h:220;--bw:168;--bh:124"><div class="mlabel"><span>من سيربح الفورة</span><svg class="ic"><use href="#crown"/></svg></div></div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a class="on"><svg class="burst y spark"><use href="#burst"/></svg><svg class="ic"><use href="#pad"/></svg>الألعاب</a>
+    <a><svg class="ic"><use href="#users"/></svg>أصدقائي</a>
+    <a><svg class="ic"><use href="#user"/></svg>حسابي</a>
+    <a><svg class="ic"><use href="#gear"/></svg>الإعدادات</a>
+  </nav>
+</div></div>
+<p class="cap">01 · Home</p>
+</section>
+
+<!-- ================= 2. Mode popup (over Home) ================= -->
+<section>
+<div class="phone"><div class="screen" data-clone="home-screen">
+  <div class="dim"></div>
+  <div class="modal">
+    <div class="mhdr">
+      <span class="close"><svg class="ic"><use href="#x"/></svg></span>
+      <div class="mart">
+        <svg class="burst y flip"><use href="#burst"/></svg>
+        <svg width="92" height="66" viewBox="0 0 92 66">
+          <rect x="14" y="12" width="34" height="44" rx="6" transform="rotate(-14 31 34)" fill="#fff" stroke="#13284b" stroke-width="3"/>
+          <rect x="42" y="6" width="36" height="46" rx="6" transform="rotate(12 60 29)" fill="#fff" stroke="#13284b" stroke-width="3"/>
+          <text x="60" y="43" transform="rotate(12 60 29)" text-anchor="middle" font-size="34" font-weight="800" fill="#ee3a2a" font-family="Baloo Bhaijaan 2">?</text>
+        </svg>
+        <svg class="burst y"><use href="#burst"/></svg>
+      </div>
+      <svg class="wave"><use href="#wave"/></svg>
+      <div class="mtitle"><svg class="burst r flip"><use href="#burst"/></svg><span class="outlined">فورة كلاسيك</span><svg class="burst r"><use href="#burst"/></svg></div>
+    </div>
+    <p class="mtext">في كل سؤال، اختار عدد النقط اللي هتلعب بيها على قد ثقتك في إجابتك.<br>بس خلي بالك، كل سؤال ليه وقت محدد، ولو الوقت خلص قبل ما تجاوب، السؤال هيروح عليك.<br>وباقي قواعد الفورة هتكتشفها جوه اللعبة.</p>
+    <div class="opts">
+      <div class="opt crop src-modal" style="--x:552;--y:856;--w:306;--h:248;--bw:166;--bh:136"><div class="olabel"><b>ابدأ الفورة<br><u>لوحدك</u></b><svg class="ic"><use href="#user"/></svg></div></div>
+      <div class="opt crop src-modal" style="--x:212;--y:856;--w:308;--h:248;--bw:166;--bh:136"><div class="olabel"><b>ابدأ الفورة<br><u>مع صحابك</u></b><svg class="ic"><use href="#users"/></svg></div></div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">02 · Mode popup</p>
+</section>
+
+<!-- ================= 3. Question ================= -->
+<section>
+<div class="phone"><div class="screen" id="question-screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="card qcard">
+      <span class="qbadge">Q1</span>
+      <svg class="burst y" style="position:absolute;top:-20px;left:50px;transform:rotate(30deg) scaleX(-1)"><use href="#burst"/></svg>
+      <svg class="burst y" style="position:absolute;top:-30px;right:14px;transform:rotate(-60deg)"><use href="#burst"/></svg>
+      من مؤسس المصباح الكهربائي؟
+    </div>
+    <div class="answer"><span class="caret"></span>Answer Here...</div>
+    <div class="card points"><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span></div>
+  </div>
+  <div class="submit"><svg class="burst y flip"><use href="#burst"/></svg><span class="btn-blue">إرسال الإجابة</span><svg class="burst y"><use href="#burst"/></svg></div>
+  <div class="pu-dim"></div>
+  <aside class="pu-drawer">
+    <div class="power">Power Up</div>
+    <div class="pu-inner">
+      <header class="pu-hdr">
+        <span class="hdr-btn end pu-close"><svg class="ic"><use href="#x"/></svg></span>
+        <span class="outlined">Power Ups</span>
+        <svg class="wave"><use href="#wave"/></svg>
+      </header>
+      <div class="pu-list">
+        <div class="pu-card yellow">
+          <div class="pu-art"><svg class="burst r flip"><use href="#burst"/></svg><span class="outlined">x2</span><svg class="burst r"><use href="#burst"/></svg></div>
+          <div class="pu-name"><b>Double</b><small>دبّل نقطك لو جاوبت صح</small></div>
+        </div>
+        <div class="pu-card blue">
+          <div class="pu-art"><svg class="big" viewBox="0 0 64 64"><use href="#pu-bulb"/></svg></div>
+          <div class="pu-name"><b>Hint</b><small>خد تلميح للإجابة</small></div>
+        </div>
+        <div class="pu-card red">
+          <div class="pu-art"><svg class="big" viewBox="0 0 64 64"><use href="#pu-watch"/></svg></div>
+          <div class="pu-name"><b>Extra</b><small>وقت زيادة عشان تجاوب</small></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div></div>
+<p class="cap">03 · Question (drag Power Up left)</p>
+</section>
+
+<!-- ================= 3a. Power-ups drawer open (over Question) ================= -->
+<section>
+<div class="phone"><div class="screen pu-open" data-clone="question-screen"></div></div>
+<p class="cap">03a · Power-ups open</p>
+</section>
+
+<!-- ================= 3b. In-game sidebar (over Question) ================= -->
+<section>
+<div class="phone"><div class="screen" data-clone="question-screen">
+  <div class="dim"></div>
+  <aside class="side">
+    <header class="hdr">
+      <span class="hdr-btn start"><svg class="ic"><use href="#x"/></svg></span>
+      <div class="logo">
+        <svg class="burst y flip"><use href="#burst"/></svg>
+        <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+        <svg class="burst y"><use href="#burst"/></svg>
+      </div>
+      <svg class="wave"><use href="#wave"/></svg>
+    </header>
+    <div class="card slist">
+      <div class="srow"><svg class="ic"><use href="#eye"/></svg><span>المتفرجين</span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#pair"/></svg><span>الثنائيات</span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#moon"/></svg><span>المظهر <bdi class="latin">(Theme)</bdi></span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow danger"><svg class="ic"><use href="#exit"/></svg><span>الخروج من اللعبة</span></div>
+      <div class="srow"><svg class="ic"><use href="#globe"/></svg><span>اللغة <bdi class="latin">(Language)</bdi></span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+    </div>
+  </aside>
+</div></div>
+<p class="cap">03b · In-game sidebar</p>
+</section>
+
+<!-- ================= 3c. Host review: mark each player's answer ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="qhead"><span class="qbadge">Q1</span><span class="btn-blue qnext"><svg class="ic"><use href="#arrow-r"/></svg></span><span class="qchat"><svg class="ic"><use href="#chat"/></svg></span></div>
+    <div class="card review">
+      <div class="rrow"><div class="crop round src-friends" style="--x:237;--y:327;--w:100;--h:100;--bw:52;--bh:52"></div><span class="name">Ammar</span><span class="ans">أديسون</span><span class="verdict no"><svg class="ic"><use href="#x"/></svg></span><span class="verdict yes"><svg class="ic"><use href="#check"/></svg></span></div>
+      <div class="rrow"><div class="crop round src-friends" style="--x:237;--y:551;--w:100;--h:100;--bw:52;--bh:52"></div><span class="name">Omar</span><span class="ans">توماس</span><span class="verdict no"><svg class="ic"><use href="#x"/></svg></span><span class="verdict yes"><svg class="ic"><use href="#check"/></svg></span></div>
+      <div class="rrow"><div class="crop round src-friends" style="--x:237;--y:438;--w:100;--h:100;--bw:52;--bh:52"></div><span class="name">Hazem</span><span class="ans">جراهام</span><span class="verdict no"><svg class="ic"><use href="#x"/></svg></span><span class="verdict yes"><svg class="ic"><use href="#check"/></svg></span></div>
+      <div class="rrow"><div class="crop round src-friends" style="--x:589;--y:950;--w:104;--h:104;--bw:52;--bh:52"></div><span class="name">Ahmed</span><span class="ans">بيل</span><span class="verdict no"><svg class="ic"><use href="#x"/></svg></span><span class="verdict yes"><svg class="ic"><use href="#check"/></svg></span></div>
+    </div>
+  </div>
+  <div class="submit next-q"><svg class="burst y flip"><use href="#burst"/></svg><span class="btn-blue"><span>السؤال التالي</span><svg class="ic"><use href="#arrow-r"/></svg></span><svg class="burst y"><use href="#burst"/></svg></div>
+</div></div>
+<p class="cap">03c · Host review</p>
+</section>
+
+<!-- ================= 3d. Question results: points won or lost ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="qhead"><span class="qbadge">Q1</span><span class="btn-blue qnext"><svg class="ic"><use href="#arrow-r"/></svg></span><span class="qchat"><svg class="ic"><use href="#chat"/></svg></span></div>
+    <div class="card review">
+      <div class="srow2"><span class="name">Ammar</span><span class="delta up">+100</span></div>
+      <div class="srow2"><span class="name">Omar</span><span class="delta up">+900</span></div>
+      <div class="srow2"><span class="name">Hazem</span><span class="delta down">−200</span></div>
+      <div class="srow2"><span class="name">Ahmed</span><span class="delta down">−500</span></div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">03d · Question results</p>
+</section>
+
+<!-- ================= 3e. Final question: the auction ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="final-ttl">
+      <div class="ttl"><svg class="burst y flip"><use href="#burst"/></svg><span>سؤال الفورة</span><svg class="burst y"><use href="#burst"/></svg></div>
+      <small>(The last dance)</small>
+    </div>
+
+    <div class="flabel">Difficulty</div>
+    <div class="dd open">
+      <div class="dd-field"><span>Easy</span><svg class="ic"><use href="#chev-d"/></svg></div>
+      <div class="dd-menu">
+        <div class="on"><span>Easy</span><svg class="ic"><use href="#check"/></svg></div>
+        <div><span>Medium</span><svg class="ic"><use href="#check"/></svg></div>
+        <div><span>Hard</span><svg class="ic"><use href="#check"/></svg></div>
+        <div><span>Random</span><svg class="ic"><use href="#check"/></svg></div>
+      </div>
+    </div>
+
+    <div class="flabel">Points</div>
+    <div class="card picker">
+      <div class="band"></div>
+      <div class="wheel"><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span></div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">03e · Final question (auction)</p>
+</section>
+
+<!-- ================= 4. Friends ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="ttl"><span class="round-btn"><svg class="ic"><use href="#search"/></svg></span><svg class="burst y flip"><use href="#burst"/></svg><span>أصدقائي</span><svg class="ic"><use href="#users"/></svg></div>
+    <div class="card" style="margin-top:8px;padding:2px 14px">
+      <div class="frow"><div class="crop round src-friends" style="--x:237;--y:327;--w:100;--h:100;--bw:54;--bh:54"></div><span class="name">Ammar</span><span class="btn-blue invite"><span>دعوة</span><svg class="ic"><use href="#user-plus"/></svg></span></div>
+      <div class="frow"><div class="crop round src-friends" style="--x:237;--y:438;--w:100;--h:100;--bw:54;--bh:54"></div><span class="name">Hazem</span><span class="btn-blue invite"><span>دعوة</span><svg class="ic"><use href="#user-plus"/></svg></span></div>
+      <div class="frow"><div class="crop round src-friends" style="--x:237;--y:551;--w:100;--h:100;--bw:54;--bh:54"></div><span class="name">Omar</span><span class="btn-blue invite"><span>دعوة</span><svg class="ic"><use href="#user-plus"/></svg></span></div>
+      <div class="frow"><div class="crop round src-friends" style="--x:237;--y:667;--w:100;--h:100;--bw:54;--bh:54"></div><span class="name">Omnia</span><span class="btn-blue invite"><span>دعوة</span><svg class="ic"><use href="#user-plus"/></svg></span></div>
+    </div>
+    <div class="hl-row" style="margin-top:22px"><svg class="burst r flip"><use href="#burst"/></svg><span class="hl">مجموعات الفورة</span><svg class="burst r"><use href="#burst"/></svg></div>
+    <div class="groups">
+      <div class="group yellow"><div class="crop src-friends" style="--x:584;--y:946;--w:248;--h:232;--bw:136;--bh:127"></div><div class="gname">العيلة<span class="gadd"><svg class="ic"><use href="#user-plus"/></svg></span></div></div>
+      <div class="group blue"><div class="crop src-friends" style="--x:241;--y:946;--w:248;--h:232;--bw:136;--bh:127"></div><div class="gname">الشلة<span class="gadd"><svg class="ic"><use href="#user-plus"/></svg></span></div></div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">04 · Friends</p>
+</section>
+
+<!-- ================= 5. Profile ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="ttl"><svg class="burst y flip"><use href="#burst"/></svg><span>حسابي</span><svg class="ic"><use href="#user"/></svg></div>
+    <div class="card pcard">
+      <div class="pinfo">
+        <div class="pname">Omar</div>
+        <div class="mail">omar123@gmail.com</div>
+        <div class="meta"><span><svg class="ic"><use href="#mars"/></svg>ذكر</span><span><svg class="ic"><use href="#calendar"/></svg>20 سنة</span></div>
+      </div>
+      <div class="vdiv"></div>
+      <div class="avatar"><div class="crop src-profile" style="--x:229;--y:386;--w:192;--h:192;--bw:114;--bh:114"></div><span class="edit btn-blue"><svg class="ic"><use href="#pencil"/></svg></span></div>
+    </div>
+    <div class="ttl" style="font-size:31px;margin-top:10px"><svg class="burst y flip"><use href="#burst"/></svg><span>تاريخ الفورة</span><svg class="ic" style="width:30px;height:30px"><use href="#history"/></svg><svg class="burst y"><use href="#burst"/></svg></div>
+    <div class="card hist">
+      <div class="hrow"><div class="tile crop src-profile" style="--x:721;--y:776;--w:112;--h:88;--bw:62;--bh:50"></div><div class="t"><b>فورة كلاسيك</b><small>4/12/2026</small></div><svg class="ic play"><use href="#play"/></svg></div>
+      <div class="hrow"><div class="tile crop src-profile" style="--x:721;--y:902;--w:112;--h:88;--bw:62;--bh:50"></div><div class="t"><b>فورة مزاد</b><small>3/12/2026</small></div><svg class="ic play"><use href="#play"/></svg></div>
+      <div class="hrow"><div class="tile crop src-profile" style="--x:721;--y:1035;--w:112;--h:88;--bw:62;--bh:50"></div><div class="t"><b>فورة مواصلات</b><small>2/12/2026</small></div><svg class="ic play"><use href="#play"/></svg></div>
+    </div>
+  </div>
+  <nav class="nav nav-3">
+    <a class="on"><svg class="ic"><use href="#user"/></svg>حسابي</a>
+    <a><svg class="ic"><use href="#bars"/></svg>إحصائياتي</a>
+    <a><svg class="ic"><use href="#gear"/></svg>الإعدادات</a>
+  </nav>
+</div></div>
+<p class="cap">05 · Profile</p>
+</section>
+
+<!-- ================= 5b. Stats (إحصائياتي) ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="st-top"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <div class="st-scroll">
+    <header class="hdr">
+      <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
+      <div class="logo">
+        <svg class="burst y flip"><use href="#burst"/></svg>
+        <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+        <svg class="burst y"><use href="#burst"/></svg>
+      </div>
+      <svg class="wave"><use href="#wave"/></svg>
+    </header>
+    <div class="body">
+      <div class="ttl"><svg class="burst y flip"><use href="#burst"/></svg><span>إحصائياتي</span><svg class="ic"><use href="#bars"/></svg></div>
+
+      <!-- Headline numbers -->
+      <div class="kpis">
+        <div class="card kpi"><b>24</b><span>فورة لعبتها</span></div>
+        <div class="card kpi"><b>62%</b><span>نسبة الفوز · 15 من 24</span></div>
+        <div class="card kpi"><b>68%</b><span>إجابات صح · 163 من 240</span></div>
+        <div class="card kpi"><b>4,200</b><span>أعلى سكور</span></div>
+      </div>
+
+      <!-- Trend -->
+      <div class="card st-card">
+        <h4>نقطك في آخر 8 فورات</h4>
+        <p class="sub">متوسط آخر 4 فورات <b>2,900</b> مقابل <b>2,050</b> في الـ 4 اللي قبلهم · <b>+41%</b><br>الخط المتقطع = متوسطك <b>2,475</b></p>
+        <svg class="linechart" viewBox="0 0 300 140" data-points="1800,2400,900,3100,2600,4200,1500,3300"></svg>
+        <div class="chart-tip"></div>
+      </div>
+
+      <!-- Accuracy by category -->
+      <div class="card st-card">
+        <h4>دقتك حسب الكاتيجوري</h4>
+        <p class="sub">أقوى كاتيجوري عندك <b>الرياضة</b>، وأضعفها <b>العلوم</b></p>
+        <div class="hbars">
+          <div class="hbar"><span>رياضة</span><div class="track"><div class="fill" style="width:82%"></div></div><span class="v">82%</span></div>
+          <div class="hbar"><span>أفلام</span><div class="track"><div class="fill" style="width:74%"></div></div><span class="v">74%</span></div>
+          <div class="hbar"><span>تاريخ</span><div class="track"><div class="fill" style="width:61%"></div></div><span class="v">61%</span></div>
+          <div class="hbar"><span>علوم</span><div class="track"><div class="fill" style="width:48%"></div></div><span class="v">48%</span></div>
+        </div>
+      </div>
+
+      <!-- Wager behaviour -->
+      <div class="card st-card">
+        <h4>رهاناتك</h4>
+        <div class="wager">
+          <div class="ok"><b>520</b><span>متوسط رهانك لما بتجاوب صح</span></div>
+          <div class="bad"><b>690</b><span>متوسط رهانك لما بتغلط</span></div>
+        </div>
+        <p class="tip-insight"><svg class="ic"><use href="#bulb-o"/></svg><span>بتراهن بنقط أكتر بـ 33% على الأسئلة اللي بتغلط فيها. حط الأرقام الكبيرة على الرياضة والأفلام، والصغيرة على العلوم.</span></p>
+      </div>
+
+      <!-- Wins by mode -->
+      <div class="card st-card">
+        <h4>الفوز حسب الفورة</h4>
+        <div class="hbars">
+          <div class="hbar"><span>كلاسيك</span><div class="track"><div class="fill" style="width:69%"></div></div><span class="v">9/13</span></div>
+          <div class="hbar"><span>مزاد</span><div class="track"><div class="fill" style="width:57%"></div></div><span class="v">4/7</span></div>
+          <div class="hbar"><span>مواصلات</span><div class="track"><div class="fill" style="width:50%"></div></div><span class="v">2/4</span></div>
+        </div>
+      </div>
+
+      <!-- Game log -->
+      <div class="card st-card">
+        <h4>سجل الفورات</h4>
+        <table class="log">
+          <thead><tr><th>النتيجة</th><th>الفورة</th><th class="d">اليوم</th></tr></thead>
+          <tbody>
+            <tr><td><span class="res win">كسب</span></td><td>فورة كلاسيك</td><td class="d">4/12/2026</td></tr>
+            <tr><td><span class="res loss">خسر</span></td><td>فورة مزاد</td><td class="d">3/12/2026</td></tr>
+            <tr><td><span class="res win">كسب</span></td><td>فورة مواصلات</td><td class="d">2/12/2026</td></tr>
+            <tr><td><span class="res win">كسب</span></td><td>فورة كلاسيك</td><td class="d">29/11/2026</td></tr>
+            <tr><td><span class="res loss">خسر</span></td><td>فورة كلاسيك</td><td class="d">27/11/2026</td></tr>
+            <tr><td><span class="res win">كسب</span></td><td>فورة مزاد</td><td class="d">25/11/2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <nav class="nav nav-3">
+    <a><svg class="ic"><use href="#user"/></svg>حسابي</a>
+    <a class="on"><svg class="ic"><use href="#bars"/></svg>إحصائياتي</a>
+    <a><svg class="ic"><use href="#gear"/></svg>الإعدادات</a>
+  </nav>
+</div></div>
+<p class="cap">05b · Stats</p>
+</section>
+
+<!-- ================= 6. Settings ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn start"><svg class="ic"><use href="#chev-r"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="ttl"><svg class="burst y flip"><use href="#burst"/></svg><span>الإعدادات</span></div>
+    <div class="card slist">
+      <div class="srow"><svg class="ic"><use href="#user"/></svg><span>تعديل الحساب</span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#bell"/></svg><span>الإشعارات</span><i class="toggle"></i></div>
+      <div class="srow"><svg class="ic"><use href="#volume"/></svg><span>الصوت والمؤثرات</span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#pad"/></svg><span>إعدادات اللعبة</span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#help"/></svg><span>المساعدة والدعم</span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#file"/></svg><span>الشروط والأحكام</span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#shield"/></svg><span>الخصوصية</span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#globe"/></svg><span>اللغة <bdi class="latin">(Language)</bdi></span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+      <div class="srow"><svg class="ic"><use href="#moon"/></svg><span>المظهر <bdi class="latin">(Theme)</bdi></span><svg class="ic chev"><use href="#chev-l"/></svg></div>
+    </div>
+    <div class="logout"><svg class="ic"><use href="#enter"/></svg><span>تسجيل الخروج</span></div>
+  </div>
+  <nav class="nav nav-3">
+    <a><svg class="ic"><use href="#user"/></svg>حسابي</a>
+    <a><svg class="ic"><use href="#bars"/></svg>إحصائياتي</a>
+    <a class="on"><svg class="ic"><use href="#gear"/></svg>الإعدادات</a>
+  </nav>
+</div></div>
+<p class="cap">06 · Settings</p>
+</section>
+
+</main>
+
+<script>
+  // The popup screen sits on top of the Home screen: copy Home's markup underneath it.
+  document.querySelectorAll('[data-clone]').forEach(function (el) {
+    var src = document.getElementById(el.dataset.clone);
+    el.insertAdjacentHTML('afterbegin', src.innerHTML);
+  });
+
+  // Stats line chart: points per game, with the average as a dashed reference line and a hover tooltip.
+  document.querySelectorAll('.linechart').forEach(function (svg) {
+    var pts = svg.dataset.points.split(',').map(Number);
+    var NS = 'http://www.w3.org/2000/svg';
+    var L = 34, R = 292, T = 12, B = 116, max = 4500;
+    var x = function (i) { return L + i * (R - L) / (pts.length - 1); };
+    var y = function (v) { return B - v / max * (B - T); };
+    var avg = pts.reduce(function (a, b) { return a + b; }, 0) / pts.length;
+    function el(name, attrs, text) {
+      var n = document.createElementNS(NS, name);
+      for (var k in attrs) n.setAttribute(k, attrs[k]);
+      if (text) n.textContent = text;
+      svg.appendChild(n); return n;
+    }
+    [0, 2000, 4000].forEach(function (v) {
+      el('line', { x1: L, x2: R, y1: y(v), y2: y(v), stroke: 'rgba(19,40,75,.08)' });
+      el('text', { x: L - 6, y: y(v) + 4, 'text-anchor': 'end' }, v ? (v / 1000) + 'k' : '0');
+    });
+    el('line', { x1: L, x2: R, y1: y(avg), y2: y(avg), stroke: '#8a93a6', 'stroke-width': 1.5, 'stroke-dasharray': '4 4' });
+    el('path', { d: pts.map(function (v, i) { return (i ? 'L' : 'M') + x(i) + ' ' + y(v); }).join(' '), fill: 'none', stroke: '#1d8ee6', 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
+    var tip = svg.parentNode.querySelector('.chart-tip');
+    pts.forEach(function (v, i) {
+      var last = i === pts.length - 1;
+      el('circle', { cx: x(i), cy: y(v), r: last ? 5.5 : 4.5, fill: last ? '#1d8ee6' : '#fff', stroke: '#1d8ee6', 'stroke-width': 2.5 });
+      el('text', { x: x(i), y: 134, 'text-anchor': 'middle' }, '#' + (17 + i));
+      var hit = el('rect', { x: x(i) - 16, y: T - 6, width: 32, height: B - T + 12, fill: 'transparent' });
+      hit.addEventListener('mouseenter', function () {
+        var box = svg.getBoundingClientRect(), card = svg.parentNode.getBoundingClientRect();
+        tip.textContent = 'فورة #' + (17 + i) + ' · ' + v.toLocaleString('en') + ' نقطة';
+        tip.style.left = (box.left - card.left + x(i) / 300 * box.width) + 'px';
+        tip.style.top = (box.top - card.top + y(v) / 140 * box.height) + 'px';
+        tip.style.display = 'block';
+      });
+      hit.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+    });
+    // Direct label on the latest point only.
+    el('text', { x: x(pts.length - 1), y: y(pts[pts.length - 1]) - 10, 'text-anchor': 'middle', style: 'fill:#13284b;font-weight:800' }, pts[pts.length - 1].toLocaleString('en'));
+  });
+
+  // Power-ups drawer: drag the "Power Up" tab to the left (or tap it) to slide the cards in.
+  document.querySelectorAll('.pu-drawer').forEach(function (drawer) {
+    var screen = drawer.closest('.screen');
+    var tab = drawer.querySelector('.power');
+    var width = drawer.offsetWidth;
+    var startX = null, moved = 0, wasOpen = false;
+
+    function setOpen(open) {
+      drawer.style.transform = '';
+      screen.classList.toggle('pu-open', open);
+    }
+    tab.addEventListener('pointerdown', function (e) {
+      startX = e.clientX; moved = 0; wasOpen = screen.classList.contains('pu-open');
+      drawer.classList.add('dragging');
+      tab.setPointerCapture(e.pointerId);
+    });
+    tab.addEventListener('pointermove', function (e) {
+      if (startX === null) return;
+      moved = e.clientX - startX;
+      var x = Math.min(width, Math.max(0, (wasOpen ? 0 : width) + moved));
+      drawer.style.transform = 'translateX(' + x + 'px)';
+    });
+    tab.addEventListener('pointerup', function () {
+      drawer.classList.remove('dragging');
+      if (Math.abs(moved) < 6) setOpen(!wasOpen);          // a tap toggles
+      else setOpen(wasOpen ? moved > -width / 3 && moved < width / 3 : moved < -40);
+      startX = null;
+    });
+    screen.querySelector('.pu-dim').addEventListener('click', function () { setOpen(false); });
+    drawer.querySelector('.pu-close').addEventListener('click', function () { setOpen(false); });
+  });
+
+  // Difficulty dropdown: open/close and pick an option.
+  document.querySelectorAll('.dd').forEach(function (dd) {
+    var label = dd.querySelector('.dd-field span');
+    dd.querySelector('.dd-field').addEventListener('click', function () { dd.classList.toggle('open'); });
+    dd.querySelectorAll('.dd-menu div').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        dd.querySelectorAll('.dd-menu div').forEach(function (o) { o.classList.remove('on'); });
+        opt.classList.add('on');
+        label.textContent = opt.textContent.trim();
+        dd.classList.remove('open');
+      });
+    });
+  });
+
+  // Points picker: an alarm-clock style wheel; the value in the centre band is the selected one.
+  document.querySelectorAll('.wheel').forEach(function (wheel) {
+    var items = wheel.querySelectorAll('span');
+    var row = 44;
+    function mark() {
+      var i = Math.round(wheel.scrollTop / row);
+      items.forEach(function (s, n) { s.classList.toggle('on', n === i); });
+    }
+    wheel.scrollTop = 4 * row; // start on 500
+    mark();
+    wheel.addEventListener('scroll', mark);
+    items.forEach(function (s, n) {
+      s.addEventListener('click', function () { wheel.scrollTo({ top: n * row, behavior: 'smooth' }); });
+    });
+  });
+</script>
+</body>
+</html>

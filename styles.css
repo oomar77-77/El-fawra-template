@@ -1,0 +1,186 @@
+/* El Fowra — refined screen mockups. One source of truth for colours, type and shared parts. */
+:root {
+  --blue: #1d8ee6;
+  --blue-light: #3fb0f4;
+  --blue-dark: #1677c9;
+  --navy: #13284b;
+  --cream: #fbeadb;
+  --card: #fcf2e7;
+  --yellow: #ffc61e;
+  --red: #ee3a2a;
+  --peach: #fbdcae;
+  --line: rgba(19, 40, 75, .09);
+  --shadow: 0 8px 18px rgba(120, 78, 40, .13), 0 1px 0 #fff inset;
+  --font: "Baloo Bhaijaan 2", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: #f6e7d8;
+  color: var(--navy);
+  min-height: 100vh;
+  padding: 40px 24px 80px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Presentation background blobs */
+.bg-blob { position: fixed; z-index: 0; fill: #1ea3ea; pointer-events: none; }
+.bg-blob.a { width: 520px; left: -220px; top: 38vh; }
+.bg-blob.b { width: 460px; right: -200px; top: 10vh; }
+
+.gallery-title {
+  position: relative; z-index: 1; text-align: center; margin-bottom: 36px;
+  font-size: 15px; letter-spacing: .04em; color: #7a6650; font-weight: 600;
+}
+
+.gallery {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(414px, 1fr));
+  gap: 56px 40px; justify-items: center; max-width: 1400px; margin: 0 auto;
+}
+
+.cap { text-align: center; margin-top: 14px; font-size: 14px; font-weight: 600; color: #7a6650; direction: ltr; }
+
+/* ---------- Device ---------- */
+.phone {
+  width: 414px; height: 868px; padding: 12px; border-radius: 58px;
+  background: linear-gradient(145deg, #3b3b40, #0d0d10 40%, #2a2a2e);
+  box-shadow: 0 30px 60px rgba(30, 40, 60, .28), 0 0 0 2px #8d8d94 inset;
+}
+
+.screen {
+  position: relative; width: 390px; height: 844px; border-radius: 46px; overflow: hidden;
+  background: var(--cream); direction: rtl;
+}
+
+.island {
+  position: absolute; z-index: 30; top: 11px; left: 50%; transform: translateX(-50%);
+  width: 122px; height: 35px; border-radius: 20px; background: #000;
+}
+
+.status {
+  position: absolute; z-index: 20; top: 0; left: 0; right: 0; height: 54px; direction: ltr;
+  display: flex; align-items: center; justify-content: space-between; padding: 6px 30px 0 40px;
+  color: #fff; font: 600 17px/1 -apple-system, "Segoe UI", sans-serif;
+}
+.status .sys { display: flex; gap: 6px; align-items: center; }
+.status svg { height: 13px; fill: #fff; }
+
+/* ---------- Icons ---------- */
+.ic {
+  width: 24px; height: 24px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.burst { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: round; flex: none; }
+.burst.flip { transform: scaleX(-1); }
+.burst.y { color: var(--yellow); }
+.burst.r { color: var(--red); }
+
+/* ---------- Header ---------- */
+.hdr {
+  position: relative; height: 158px;
+  background: linear-gradient(180deg, var(--blue-light) 0%, var(--blue) 55%, var(--blue-dark) 100%);
+}
+.hdr.tall { height: 182px; }
+.hdr .wave { position: absolute; left: 0; bottom: -1px; width: 100%; height: 62px; fill: var(--cream); }
+
+.hdr-btn {
+  position: absolute; top: 62px; width: 46px; height: 46px; border-radius: 50%;
+  background: #fff; color: var(--navy); display: grid; place-items: center;
+  box-shadow: 0 4px 10px rgba(10, 40, 80, .25); z-index: 5;
+}
+.hdr-btn.start { right: 22px; }  /* RTL: back sits on the reading-start side */
+.hdr-btn.end { left: 22px; }
+.hdr-btn .ic { width: 26px; height: 26px; stroke-width: 3; }
+
+.doodle { position: absolute; color: #fff; opacity: .9; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+
+/* ---------- Logo (one lockup, two sizes) ---------- */
+.logo {
+  position: absolute; left: 50%; top: 56px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 6px; z-index: 4;
+}
+.logo .mark { position: relative; text-align: center; }
+.logo .word {
+  display: block; font-weight: 800; color: #fff; font-size: 46px; line-height: 1;
+  padding-top: 14px;
+  text-shadow:
+    3px 0 0 var(--navy), -3px 0 0 var(--navy), 0 3px 0 var(--navy), 0 -3px 0 var(--navy),
+    2px 2px 0 var(--navy), -2px 2px 0 var(--navy), 2px -2px 0 var(--navy), -2px -2px 0 var(--navy),
+    0 6px 0 var(--navy), 3px 6px 0 var(--navy), -3px 6px 0 var(--navy);
+}
+.logo .crown { position: absolute; top: -6px; left: 50%; transform: translateX(-38%) rotate(-6deg); width: 34px; height: 26px; }
+.logo .uline { display: block; margin: 4px auto 0; width: 62%; height: 7px; }
+.logo .burst { width: 30px; height: 30px; }
+.logo.lg { top: 62px; }
+.logo.lg .word { font-size: 64px; padding-top: 20px; }
+.logo.lg .crown { width: 46px; height: 36px; top: -8px; }
+.logo.lg .burst { width: 40px; height: 40px; }
+
+/* ---------- Content ---------- */
+.body { position: relative; padding: 0 22px; margin-top: -10px; }
+
+.ttl {
+  position: relative; display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-size: 38px; font-weight: 800; line-height: 1.2; height: 58px;
+}
+.ttl .ic { width: 36px; height: 36px; color: var(--red); stroke-width: 1.8; }
+.ttl .round-btn {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 52px; height: 52px; border-radius: 50%; background: var(--card); box-shadow: var(--shadow);
+  display: grid; place-items: center;
+}
+.ttl .round-btn .ic { color: var(--navy); width: 26px; height: 26px; stroke-width: 2.6; }
+
+.hl-row { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.hl {
+  background: var(--yellow); border-radius: 16px; padding: 0 20px; height: 42px;
+  display: flex; align-items: center; font-size: 28px; font-weight: 800; line-height: 1;
+}
+
+.card { background: var(--card); border-radius: 28px; box-shadow: var(--shadow); }
+
+/* Image crops from the source art: --x --y --w --h are source pixels, --bw --bh the box size */
+.crop {
+  width: calc(var(--bw) * 1px); height: calc(var(--bh) * 1px); flex: none;
+  background-image: var(--img); background-repeat: no-repeat;
+  background-size: calc(1088px * var(--bw) / var(--w)) calc(1445px * var(--bh) / var(--h));
+  background-position: calc(-1px * var(--x) * var(--bw) / var(--w)) calc(-1px * var(--y) * var(--bh) / var(--h));
+}
+.src-friends { --img: url(assets/src-friends.webp); }
+.src-home { --img: url(assets/src-home.webp); }
+.src-modal { --img: url(assets/src-modal.webp); }
+.src-profile { --img: url(assets/src-profile.webp); }
+.round { border-radius: 50%; }
+
+
+/* ---------- Buttons ---------- */
+.btn-blue {
+  background: linear-gradient(180deg, #2ba3f0, #1580d6); color: #fff; border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(21, 128, 214, .3), 0 1px 0 rgba(255,255,255,.35) inset;
+  display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700;
+}
+
+/* ---------- Bottom nav ---------- */
+.nav {
+  position: absolute; left: 16px; right: 16px; bottom: 22px; height: 76px; border-radius: 38px;
+  background: var(--card); box-shadow: 0 8px 22px rgba(120, 78, 40, .18), 0 1px 0 #fff inset;
+  display: flex; align-items: center; padding: 6px;
+}
+.nav a {
+  flex: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; font-size: 16px; font-weight: 700; color: var(--navy); text-decoration: none; position: relative;
+}
+.nav a + a::before {
+  content: ""; position: absolute; right: 0; top: 22%; bottom: 22%; width: 1px; background: var(--line);
+}
+.nav a .ic { width: 28px; height: 28px; stroke-width: 1.7; }
+.nav a.on {
+  background: linear-gradient(180deg, #2ba3f0, #1580d6); color: #fff; border-radius: 32px;
+  box-shadow: 0 4px 10px rgba(21, 128, 214, .35);
+}
+.nav a.on::before, .nav a.on + a::before { display: none; }
+.nav-3 a.on { flex: 1.25; }
