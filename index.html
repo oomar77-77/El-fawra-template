@@ -319,6 +319,110 @@
     display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 25px; font-weight: 800; padding-top: 3px;
   }
   .logout .ic { width: 30px; height: 30px; stroke-width: 2; margin-top: -3px; }
+
+  /* ----- Ads (proposal) ----- */
+  .gallery-sec {
+    grid-column: 1 / -1; text-align: center; margin-top: 24px; font-size: 15px; font-weight: 800; letter-spacing: .12em;
+    color: #7a6650; direction: ltr; border-top: 2px dashed rgba(122, 102, 80, .35); padding-top: 26px; width: 100%;
+  }
+  .gallery-sec small { display: block; font-size: 13px; letter-spacing: 0; font-weight: 600; margin-top: 4px; }
+  .ad-tag {
+    display: inline-flex; align-items: center; height: 20px; padding: 2px 8px 0; border-radius: 6px;
+    background: #e8dccd; color: #6b5a47; font-size: 12px; font-weight: 800; line-height: 1;
+  }
+  .ad-ph {
+    display: grid; place-items: center; text-align: center; color: #8a96aa; font-weight: 800;
+    background: repeating-linear-gradient(135deg, #eef1f6 0 12px, #e3e8f0 12px 24px);
+  }
+
+  /* Game over */
+  .go-title { font-size: 34px; }
+  .standings { margin-top: 6px; padding: 2px 14px; }
+  .standings .srow2 { height: 54px; }
+  .standings .rank { width: 30px; font-size: 20px; font-weight: 800; color: #8a7a66; }
+  .standings .srow2.win .rank { color: #e0a800; }
+  .standings .pts { font-size: 20px; font-weight: 800; }
+  .reward {
+    margin-top: 14px; padding: 14px 14px 12px; position: relative; text-align: center;
+    background: linear-gradient(180deg, #fff6d6, #ffeaa6); border: 2.5px dashed #f2b600;
+  }
+  .reward .rtop { display: flex; align-items: center; gap: 12px; text-align: right; }
+  .reward .rico {
+    width: 54px; height: 54px; border-radius: 16px; background: var(--yellow); flex: none;
+    display: grid; place-items: center; box-shadow: 0 3px 0 #d79e00;
+  }
+  .reward .rico .ic { width: 32px; height: 32px; color: var(--navy); stroke-width: 2; }
+  .reward b { display: block; font-size: 19px; line-height: 1.3; }
+  .reward p { font-size: 14px; font-weight: 600; color: #5b6880; line-height: 1.35; }
+  .reward .btn-blue { height: 44px; margin-top: 10px; font-size: 19px; padding-top: 3px; }
+  .reward .btn-blue .ic { width: 24px; height: 24px; margin-top: -3px; }
+  .reward .fine { margin-top: 6px; font-size: 12.5px; color: #8a7a66; }
+  .go-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .go-btns .btn-red { font-size: 19px; }
+  .btn-ghost {
+    height: 46px; border-radius: 23px; border: 2.5px solid var(--navy); display: flex; align-items: center;
+    justify-content: center; font-size: 19px; font-weight: 800; padding-top: 3px;
+  }
+
+  /* Ad playing (full screen) */
+  .adfull { position: absolute; inset: 0; background: #0f1a2c; color: #fff; }
+  .adfull .ad-ph { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, #1b2840 0 14px, #18233a 14px 28px); color: #6e7f9c; font-size: 22px; }
+  .adfull .ad-ph span { display: block; font-size: 14px; font-weight: 600; margin-top: 4px; }
+  .adbar { position: absolute; z-index: 5; top: 62px; left: 18px; right: 18px; display: flex; align-items: center; gap: 10px; }
+  .adbar .prog { flex: 1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.22); overflow: hidden; }
+  .adbar .prog i { display: block; height: 100%; width: 40%; background: var(--yellow); border-radius: 3px; }
+  .adbar .count {
+    height: 34px; padding: 3px 14px 0; border-radius: 17px; background: rgba(0,0,0,.45); font-size: 15px; font-weight: 800;
+    display: flex; align-items: center; white-space: nowrap;
+  }
+  .adbar .xoff { width: 34px; height: 34px; border-radius: 50%; background: rgba(0,0,0,.45); display: grid; place-items: center; opacity: .4; }
+  .adbar .xoff .ic { width: 18px; height: 18px; stroke-width: 3; }
+  .adfull .ad-tag { position: absolute; z-index: 5; top: 108px; right: 18px; background: rgba(255,255,255,.18); color: #fff; }
+  .adprize {
+    position: absolute; z-index: 5; left: 16px; right: 16px; bottom: 30px; border-radius: 24px; background: var(--cream); color: var(--navy);
+    padding: 12px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  }
+  .adprize .rico { width: 48px; height: 48px; border-radius: 14px; background: var(--yellow); display: grid; place-items: center; flex: none; }
+  .adprize .rico .ic { width: 28px; height: 28px; }
+  .adprize b { display: block; font-size: 17px; line-height: 1.3; }
+  .adprize small { font-size: 13.5px; font-weight: 600; color: #5b6880; }
+
+  /* Interstitial between games */
+  .inter .adbar { justify-content: space-between; }
+  .inter .skip {
+    height: 36px; padding: 3px 16px 0; border-radius: 18px; background: rgba(255,255,255,.92); color: var(--navy);
+    font-size: 15px; font-weight: 800; display: flex; align-items: center; gap: 6px;
+  }
+  .inter .skip .ic { width: 18px; height: 18px; stroke-width: 2.6; margin-top: -2px; }
+  .inter .cta {
+    position: absolute; z-index: 5; left: 22px; right: 22px; bottom: 40px; height: 50px; border-radius: 25px;
+    background: #fff; color: #0f1a2c; display: grid; place-items: center; font-size: 19px; font-weight: 800; padding-top: 3px;
+  }
+  .inter .why {
+    position: absolute; z-index: 5; left: 22px; right: 22px; bottom: 100px; text-align: center; font-size: 13px; font-weight: 600; color: #aab6cc;
+  }
+
+  /* Ad inside the Power Up drawer: shown first, the cards come after the countdown */
+  .pu-adbox { display: none; padding: 10px 14px; text-align: center; }
+  .pu-ad:not(.ad-done) .pu-adbox { display: block; }
+  .pu-ad:not(.ad-done) .pu-list { display: none; }
+  .pu-adbox .ad-tag { margin-bottom: 8px; }
+  .pu-adbox .ad-ph { height: 300px; border-radius: 22px; font-size: 17px; box-shadow: var(--shadow); }
+  .pu-adbox .ad-ph span { display: block; font-size: 12px; font-weight: 600; margin-top: 4px; }
+  .pu-adbox .prog { height: 6px; border-radius: 3px; background: rgba(19, 40, 75, .12); margin-top: 14px; overflow: hidden; }
+  .pu-adbox .prog i { display: block; height: 100%; width: 0; background: var(--yellow); border-radius: 3px; }
+  .pu-adbox .prog i.run { width: 100%; transition: width 5s linear; }
+  .pu-adbox .wait { margin-top: 8px; font-size: 15px; font-weight: 800; line-height: 1.35; }
+  .pu-adbox .wait small { display: block; font-size: 12.5px; font-weight: 600; color: #5b6880; }
+
+  /* Native ad card inside Stats */
+  .native { margin-top: 12px; padding: 12px 14px; display: flex; gap: 12px; align-items: center; position: relative; }
+  .native .ad-tag { position: absolute; top: 10px; left: 12px; }
+  .native .nlogo { width: 62px; height: 62px; border-radius: 18px; flex: none; font-size: 13px; }
+  .native .ntext { flex: 1; min-width: 0; }
+  .native b { display: block; font-size: 17px; line-height: 1.3; }
+  .native p { font-size: 13.5px; font-weight: 600; color: #5b6880; line-height: 1.35; }
+  .native .btn-blue { height: 34px; padding: 3px 14px 0; font-size: 15px; margin-top: 6px; width: max-content; }
 </style>
 </head>
 <body>
@@ -363,6 +467,9 @@
   <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="pair" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.2"/><circle cx="16.5" cy="9" r="2.8"/><path d="M2.5 20v-.5A5.5 5.5 0 0 1 8 14a5.5 5.5 0 0 1 5.5 5.5v.5"/><path d="M15 14.2a4.8 4.8 0 0 1 6.5 4.5v.8"/></symbol>
   <symbol id="exit" viewBox="0 0 24 24"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21H13"/><path d="m17 8 4 4-4 4M21 12H10"/></symbol>
+  <symbol id="gift" viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M2.5 9h19v-1a1.5 1.5 0 0 0-1.5-1.5H4A1.5 1.5 0 0 0 2.5 8zM12 6.5v14M12 6.5S10.5 2.5 8 3s-1.5 3.5 4 3.5zM12 6.5s1.5-4 4-3.5 1.5 3.5-4 3.5z"/></symbol>
+  <symbol id="tv-play" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="13.5" rx="2.5"/><path d="M8 21h8"/><path d="M10.2 8.6v5.3l4.4-2.65z" fill="currentColor"/></symbol>
+  <symbol id="skip" viewBox="0 0 24 24"><path d="m5 6 8 6-8 6zM17 6v12"/></symbol>
   <symbol id="mars"viewBox="0 0 24 24"><circle cx="10" cy="14" r="6"/><path d="M14.4 9.6 20.5 3.5M15 3.5h5.5V9"/></symbol>
 
   <!-- status bar glyphs -->
@@ -711,7 +818,7 @@
 
 <!-- ================= 5b. Stats (إحصائياتي) ================= -->
 <section>
-<div class="phone"><div class="screen">
+<div class="phone"><div class="screen" id="stats-screen">
   <div class="island"></div>
   <div class="st-top"></div>
   <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
@@ -840,6 +947,122 @@
 <p class="cap">06 · Settings</p>
 </section>
 
+<p class="gallery-sec">ADS · PROPOSAL<small>Ideas to discuss, not approved. No ads on any screen with a timer.</small></p>
+
+<!-- ================= 7. Game over + rewarded-ad offer ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="ttl go-title"><svg class="burst r flip"><use href="#burst"/></svg><span>الفورة خلصت!</span><svg class="ic"><use href="#crown"/></svg></div>
+    <div class="card standings">
+      <div class="srow2 win"><span class="rank">1</span><span class="name">Omar</span><span class="pts">3,400</span></div>
+      <div class="srow2"><span class="rank">2</span><span class="name">Ammar</span><span class="pts">2,900</span></div>
+      <div class="srow2"><span class="rank">3</span><span class="name">Hazem</span><span class="pts">1,700</span></div>
+      <div class="srow2"><span class="rank">4</span><span class="name">Ahmed</span><span class="pts">900</span></div>
+    </div>
+
+    <!-- Rewarded ad: the player chooses to watch -->
+    <div class="card reward">
+      <div class="rtop">
+        <span class="rico"><svg class="ic"><use href="#gift"/></svg></span>
+        <div><b>جرّب كاتيجوري «أفلام عربي» ببلاش</b><p>اتفرج على إعلان قصير (15 ثانية) وافتحها لفورتك الجاية</p></div>
+      </div>
+      <div class="btn-blue"><svg class="ic"><use href="#tv-play"/></svg><span>اتفرج وافتحها</span></div>
+      <p class="fine">اختياري · مش بيأثر على نقطك</p>
+    </div>
+
+    <div class="go-btns">
+      <div class="btn-red"><span>العب تاني</span></div>
+      <div class="btn-ghost">الرئيسية</div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">07 · Game over + rewarded-ad offer</p>
+</section>
+
+<!-- ================= 7a. Rewarded ad playing ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <div class="adfull">
+    <div class="ad-ph"><div>فيديو الإعلان<span>(Ad video, 15 sec)</span></div></div>
+    <div class="adbar">
+      <span class="xoff"><svg class="ic"><use href="#x"/></svg></span>
+      <div class="prog"><i></i></div>
+      <span class="count">المكافأة بعد 9 ث</span>
+    </div>
+    <span class="ad-tag">إعلان</span>
+    <div class="adprize">
+      <span class="rico"><svg class="ic"><use href="#gift"/></svg></span>
+      <div><b>«أفلام عربي» مفتوحة لفورة واحدة</b><small>كمّل الفيديو وهتتفتح لك على طول</small></div>
+    </div>
+  </div>
+</div></div>
+<p class="cap">07a · Rewarded ad playing</p>
+</section>
+
+<!-- ================= 7b. Interstitial between games ================= -->
+<section>
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <div class="adfull inter">
+    <div class="ad-ph"><div>إعلان بيملا الشاشة<span>(Interstitial: image or video)</span></div></div>
+    <div class="adbar">
+      <span class="skip"><span>تخطّي</span><svg class="ic"><use href="#skip"/></svg></span>
+      <span class="ad-tag" style="position:static;background:rgba(255,255,255,.18);color:#fff">إعلان</span>
+    </div>
+    <p class="why">بيظهر وإنت راجع للرئيسية بس، مرة كل 3 فورات.<br>مع Premium مفيش إعلانات خالص.</p>
+    <div class="cta">اعرف أكتر</div>
+  </div>
+</div></div>
+<p class="cap">07b · Interstitial (between games)</p>
+</section>
+
+<!-- ================= 7c. Ad when the player pulls Power Up ================= -->
+<section>
+<div class="phone"><div class="screen pu-open pu-ad" data-clone="question-screen" data-pu-ad></div></div>
+<p class="cap">07c · Pull Power Up → ad, then the cards</p>
+</section>
+
+<template id="pu-ad">
+  <div class="pu-adbox">
+    <span class="ad-tag">إعلان</span>
+    <div class="ad-ph"><div>مساحة الإعلان<span>(Ad, 5 sec)</span></div></div>
+    <div class="prog"><i></i></div>
+    <p class="wait">الكروت هتظهر بعد <b class="sec">5</b> ث<small>مع Premium الكروت بتظهر على طول</small></p>
+  </div>
+</template>
+
+<!-- ================= 7d. Native ad card in Stats ================= -->
+<section>
+<div class="phone"><div class="screen" data-clone="stats-screen" data-native-ad></div></div>
+<p class="cap">07d · Native ad card in Stats</p>
+</section>
+
+<template id="native-ad">
+  <div class="card native">
+    <span class="ad-tag">إعلان</span>
+    <div class="nlogo ad-ph">لوجو</div>
+    <div class="ntext">
+      <b>اسم البراند</b>
+      <p>جملة إعلان قصيرة بنفس شكل كروت الـ app</p>
+      <div class="btn-blue">اعرف أكتر</div>
+    </div>
+  </div>
+</template>
+
 </main>
 
 <script>
@@ -847,6 +1070,44 @@
   document.querySelectorAll('[data-clone]').forEach(function (el) {
     var src = document.getElementById(el.dataset.clone);
     el.insertAdjacentHTML('afterbegin', src.innerHTML);
+  });
+
+  // Ads proposal: drop the native ad card into the cloned Stats screen, under the headline numbers.
+  document.querySelectorAll('[data-native-ad] .kpis').forEach(function (k) {
+    k.insertAdjacentHTML('afterend', document.getElementById('native-ad').innerHTML);
+  });
+
+  // Ads proposal: pulling Power Up shows a 5-second ad in the drawer, then the cards.
+  // The gallery shows it open on the ad; the countdown runs each time the drawer is opened.
+  document.querySelectorAll('[data-pu-ad]').forEach(function (screen) {
+    screen.querySelector('.pu-hdr').insertAdjacentHTML('afterend', document.getElementById('pu-ad').innerHTML);
+    var bar = screen.querySelector('.pu-adbox .prog i');
+    var sec = screen.querySelector('.pu-adbox .sec');
+    var timer = null;
+    function reset() {
+      clearInterval(timer);
+      screen.classList.remove('ad-done');
+      bar.classList.remove('run');
+      sec.textContent = '5';
+    }
+    function play() {
+      reset();
+      void bar.offsetWidth;                       // restart the bar animation
+      bar.classList.add('run');
+      var left = 5;
+      timer = setInterval(function () {
+        left -= 1;
+        sec.textContent = String(left);
+        if (left <= 0) { clearInterval(timer); screen.classList.add('ad-done'); }
+      }, 1000);
+    }
+    var wasOpen = screen.classList.contains('pu-open');
+    new MutationObserver(function () {
+      var open = screen.classList.contains('pu-open');
+      if (open && !wasOpen) play();
+      if (!open && wasOpen) reset();
+      wasOpen = open;
+    }).observe(screen, { attributes: true, attributeFilter: ['class'] });
   });
 
   // Stats line chart: points per game, with the average as a dashed reference line and a hover tooltip.
