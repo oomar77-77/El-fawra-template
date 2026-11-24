@@ -590,6 +590,47 @@
   .sp.slim .sp-go .ic { width: 14px; height: 14px; stroke-width: 3; }
   .sp.slim + .answer { margin-top: 14px; }
 
+  /* ----- Category vote (فورة كلاسيك) ----- */
+  .cv-head { display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
+  .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .cat {
+    position: relative; height: 92px; border-radius: 22px; padding: 10px 12px 8px; cursor: pointer;
+    display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 6px 14px rgba(120, 78, 40, .16);
+    border: 3px solid transparent; transition: transform .12s, border-color .12s;
+  }
+  .cat:active { transform: scale(.97); }
+  .cat.c1 { background: radial-gradient(circle at 80% 20%, #8fd3ff, #3fb0f4 75%); }
+  .cat.c2 { background: radial-gradient(circle at 80% 20%, #ffe48a, #ffc61e 75%); }
+  .cat.c3 { background: radial-gradient(circle at 80% 20%, #ffa596, #f5513f 75%); }
+  .cat.c4 { background: radial-gradient(circle at 80% 20%, #b6ef9a, #6fcf4a 75%); }
+  .cat.c5 { background: radial-gradient(circle at 80% 20%, #dcb8ff, #b06bf0 75%); }
+  .cat.c6 { background: repeating-linear-gradient(135deg, #fcf2e7 0 12px, #f4e4d0 12px 24px); }
+  .cat .top { display: flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 800; line-height: 1; }
+  .cat .top span { padding-top: 4px; }
+  .cat .top .bub { width: 34px; height: 34px; border-radius: 50%; background: #fff; display: grid; place-items: center; flex: none; border: 2px solid var(--navy); font-size: 18px; font-weight: 800; padding-top: 3px; }
+  .cat .top .bub .ic { width: 20px; height: 20px; margin-top: -3px; stroke-width: 2.2; }
+  .cat .votes { display: flex; align-items: center; direction: ltr; min-height: 32px; }
+  .cat .votes .crop { width: 32px; height: 32px; border: 2.5px solid #fff; margin-right: -9px; box-shadow: 0 2px 4px rgba(0,0,0,.2); }
+  .cat .cnt {
+    position: absolute; right: 10px; bottom: 10px; min-width: 28px; height: 28px; border-radius: 14px; background: var(--navy); color: #fff;
+    font-size: 15px; font-weight: 800; display: grid; place-items: center; padding: 3px 7px 0; direction: ltr;
+  }
+  .cat .cnt:empty { display: none; }
+  .cat.mine { border-color: var(--navy); }
+  .cat .mine-tag {
+    position: absolute; top: -10px; left: 12px; height: 22px; padding: 3px 9px 0; border-radius: 11px; background: var(--navy); color: #fff;
+    font-size: 11.5px; font-weight: 800; display: none;
+  }
+  .cat.mine .mine-tag { display: block; }
+  .cat .lead {
+    position: absolute; top: -12px; right: 10px; height: 24px; padding: 3px 10px 0; border-radius: 12px; background: #fff; border: 2px solid var(--navy);
+    font-size: 12px; font-weight: 800; display: none; align-items: center; gap: 4px;
+  }
+  .cat .lead .ic { width: 14px; height: 14px; color: var(--red); margin-top: -3px; }
+  .cat.leading .lead { display: flex; }
+  .cv-note { margin-top: 12px; text-align: center; font-size: 15px; font-weight: 800; color: #3d4c66; }
+  .cv-note b { color: var(--red); }
+
   /* ----- Lobby ----- */
   .lb-code { margin-top: 8px; padding: 12px 14px 12px; text-align: center; }
   .lb-code small { display: block; font-size: 14px; font-weight: 700; color: #5b6880; }
@@ -670,6 +711,8 @@
   <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="pair" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.2"/><circle cx="16.5" cy="9" r="2.8"/><path d="M2.5 20v-.5A5.5 5.5 0 0 1 8 14a5.5 5.5 0 0 1 5.5 5.5v.5"/><path d="M15 14.2a4.8 4.8 0 0 1 6.5 4.5v.8"/></symbol>
   <symbol id="exit" viewBox="0 0 24 24"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21H13"/><path d="m17 8 4 4-4 4M21 12H10"/></symbol>
+  <symbol id="ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m12 7.5 4 2.9-1.5 4.7h-5L8 10.4z"/><path d="M12 3v4.5M20.6 9.5l-4.6.9M17 19.5l-2.5-4.4M7 19.5l2.5-4.4M3.4 9.5l4.6.9"/></symbol>
+  <symbol id="film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
   <symbol id="star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z" fill="#ffc61e" stroke="#13284b" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="m8.3 10.8 7.4-4.4M8.3 13.2l7.4 4.4"/></symbol>
   <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8.5-5.2-8.5-11.2A4.8 4.8 0 0 1 12 7a4.8 4.8 0 0 1 8.5 2.8C20.5 15.8 12 21 12 21z" fill="#ee3a2a" stroke="#13284b" stroke-width="1.8" stroke-linejoin="round"/></symbol>
@@ -778,6 +821,38 @@
   </div>
 </div></div>
 <p class="cap">02 · Mode popup</p>
+</section>
+
+<!-- ================= 2a. Category vote (فورة كلاسيك) ================= -->
+<section>
+<div class="phone"><div class="screen cat-vote">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="sys"><svg viewBox="0 0 18 12" width="18"><use href="#sb-signal"/></svg><svg viewBox="0 0 16 12" width="16"><use href="#sb-wifi"/></svg><svg viewBox="0 0 27 12" width="27"><use href="#sb-batt"/></svg></span></div>
+  <header class="hdr">
+    <span class="hdr-btn end"><svg class="ic"><use href="#menu"/></svg></span>
+    <div class="logo">
+      <svg class="burst y flip"><use href="#burst"/></svg>
+      <div class="mark"><svg class="crown"><use href="#logo-crown"/></svg><span class="word">الفورة</span><svg class="uline"><use href="#logo-uline"/></svg></div>
+      <svg class="burst y"><use href="#burst"/></svg>
+    </div>
+    <svg class="wave"><use href="#wave"/></svg>
+  </header>
+  <div class="body">
+    <div class="ttl" style="font-size:32px;height:50px"><svg class="burst y flip"><use href="#burst"/></svg><span>اختار الكاتيجوري</span><svg class="ic"><use href="#cards"/></svg></div>
+    <div class="cv-head"><span class="chip"><svg class="ic"><use href="#users"/></svg>4 من 4 اختاروا</span><span class="chip time"><svg class="ic"><use href="#clock"/></svg>0:08</span></div>
+    <div class="cv-grid">
+      <div class="cat c1" data-votes="ammar"><span class="mine-tag">اختيارك</span><span class="lead"><svg class="ic"><use href="#crown"/></svg>الأكتر</span><div class="top"><span class="bub"><svg class="ic"><use href="#ball"/></svg></span><span>رياضة</span></div><div class="votes"></div><span class="cnt"></span></div>
+      <div class="cat c2" data-votes="omar,hazem"><span class="mine-tag">اختيارك</span><span class="lead"><svg class="ic"><use href="#crown"/></svg>الأكتر</span><div class="top"><span class="bub"><svg class="ic"><use href="#film"/></svg></span><span>أفلام</span></div><div class="votes"></div><span class="cnt"></span></div>
+      <div class="cat c3" data-votes="ahmed"><span class="mine-tag">اختيارك</span><span class="lead"><svg class="ic"><use href="#crown"/></svg>الأكتر</span><div class="top"><span class="bub"><svg class="ic"><use href="#history"/></svg></span><span>تاريخ</span></div><div class="votes"></div><span class="cnt"></span></div>
+      <div class="cat c4" data-votes=""><span class="mine-tag">اختيارك</span><span class="lead"><svg class="ic"><use href="#crown"/></svg>الأكتر</span><div class="top"><span class="bub"><svg class="ic"><use href="#bulb-o"/></svg></span><span>علوم</span></div><div class="votes"></div><span class="cnt"></span></div>
+      <div class="cat c5" data-votes=""><span class="mine-tag">اختيارك</span><span class="lead"><svg class="ic"><use href="#crown"/></svg>الأكتر</span><div class="top"><span class="bub"><svg class="ic"><use href="#volume"/></svg></span><span>أغاني</span></div><div class="votes"></div><span class="cnt"></span></div>
+      <div class="cat c6" data-votes=""><span class="mine-tag">اختيارك</span><span class="lead"><svg class="ic"><use href="#crown"/></svg>الأكتر</span><div class="top"><span class="bub">?</span><span>عشوائي</span></div><div class="votes"></div><span class="cnt"></span></div>
+    </div>
+    <p class="cv-note">دوس على كاتيجوري عشان تغيّر اختيارك · الأكتر: <b class="cv-win">أفلام</b></p>
+    <div class="sp" data-ad></div>
+  </div>
+</div></div>
+<p class="cap">02a · Category vote (tap to move your vote)</p>
 </section>
 
 <!-- ================= 3. Question ================= -->
@@ -1650,6 +1725,42 @@
       : '<span class="sp-tag">إعلان</span><svg class="burst y sp-spark"><use href="#burst"/></svg>' +
         '<div class="sp-logo ad-ph">لوجو</div><div class="sp-t"><b>' + title + '</b><small>' + line + '</small></div>' +
         '<span class="sp-cta">شوف<svg class="ic"><use href="#chev-l"/></svg></span>';
+  });
+
+  // Category vote: each card shows the avatars of the players who picked it. Tapping a card moves your vote
+  // (Omar); the card with the most votes gets the crown. A tie shows no crown (the brief picks at random, #22).
+  document.querySelectorAll('.cat-vote').forEach(function (screen) {
+    var me = 'omar';
+    var faces = {
+      omar: '--x:237;--y:551;--w:100;--h:100', hazem: '--x:237;--y:438;--w:100;--h:100',
+      ammar: '--x:237;--y:327;--w:100;--h:100', ahmed: '--x:589;--y:950;--w:104;--h:104'
+    };
+    var cats = screen.querySelectorAll('.cat');
+    var win = screen.querySelector('.cv-win');
+    function render() {
+      var best = 0, leaders = [];
+      cats.forEach(function (c) {
+        var v = c.dataset.votes ? c.dataset.votes.split(',') : [];
+        c.querySelector('.votes').innerHTML = v.map(function (n) {
+          return '<div class="crop round src-friends" style="' + faces[n] + ';--bw:32;--bh:32"></div>';
+        }).join('');
+        c.querySelector('.cnt').textContent = v.length ? String(v.length) : '';
+        c.classList.toggle('mine', v.indexOf(me) >= 0);
+        if (v.length > best) { best = v.length; leaders = [c]; } else if (v.length === best && best) leaders.push(c);
+      });
+      cats.forEach(function (c) { c.classList.toggle('leading', leaders.length === 1 && leaders[0] === c); });
+      win.textContent = leaders.length === 1 ? leaders[0].querySelector('.top span:last-child').textContent : 'تعادل، هتتختار عشوائي';
+    }
+    cats.forEach(function (c) {
+      c.addEventListener('click', function () {
+        cats.forEach(function (o) {
+          o.dataset.votes = (o.dataset.votes ? o.dataset.votes.split(',') : []).filter(function (n) { return n !== me; }).join(',');
+        });
+        c.dataset.votes = (c.dataset.votes ? c.dataset.votes + ',' : '') + me;
+        render();
+      });
+    });
+    render();
   });
 
   // The popup screen sits on top of the Home screen: copy Home's markup underneath it.
