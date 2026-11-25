@@ -278,6 +278,10 @@
   .pu-open .pu-card:nth-child(1) { transition-delay: .12s; }
   .pu-open .pu-card:nth-child(2) { transition-delay: .2s; }
   .pu-open .pu-card:nth-child(3) { transition-delay: .28s; }
+  .pu-bub { width: 66px; height: 66px; border-radius: 50%; background: #fff; border: 3.5px solid var(--navy); display: grid; place-items: center; box-shadow: 0 3px 0 rgba(19, 40, 75, .25); }
+  .pu-bub .ic { width: 36px; height: 36px; stroke-width: 2.2; color: var(--navy); }
+  .pu-card.used { filter: grayscale(1); opacity: .45 !important; pointer-events: none; }
+  .pu-card.used::after { content: "اتستخدم"; position: absolute; top: 12px; left: 12px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 800; border-radius: 10px; padding: 3px 9px 1px; }
   .pu-card.yellow { background: radial-gradient(circle at 50% 35%, #ffe07a, #f8bd10 70%); }
   .pu-card.blue { background: radial-gradient(circle at 50% 35%, #6cc6ff, #1a86dc 70%); }
   .pu-card.red { background: radial-gradient(circle at 50% 35%, #ff8a73, #e23222 70%); }
@@ -1463,11 +1467,6 @@
       <b>أنهي فيلم من دول بطولة أحمد زكي؟</b>
     </div>
     <div class="sp slim" data-ad></div>
-    <div class="lifelines">
-      <div class="ll" data-ll="5050"><span class="c">50:50</span>شيل اتنين</div>
-      <div class="ll"><span class="c"><svg class="ic"><use href="#users"/></svg></span>اسأل صاحبك</div>
-      <div class="ll"><span class="c"><svg class="ic"><use href="#bars"/></svg></span>رأي الأوضة</div>
-    </div>
     <div class="choices" data-right="1">
       <div class="choice"><span class="l">أ</span><span>الإرهاب والكباب</span></div>
       <div class="choice pick"><span class="l">ب</span><span>أيام السادات</span></div>
@@ -1479,8 +1478,33 @@
     <div class="btn-ghost">انسحب بـ 500</div>
     <div class="btn-blue"><span>تأكيد الإجابة</span><svg class="ic"><use href="#check"/></svg></div>
   </div>
+  <div class="pu-dim"></div>
+  <aside class="pu-drawer">
+    <div class="power">Power Up</div>
+    <div class="pu-inner">
+      <header class="pu-hdr">
+        <span class="hdr-btn end pu-close"><svg class="ic"><use href="#x"/></svg></span>
+        <span class="outlined">Power Ups</span>
+        <svg class="wave"><use href="#wave"/></svg>
+      </header>
+      <div class="pu-list">
+        <div class="pu-card yellow" data-ll="5050">
+          <div class="pu-art"><svg class="burst r flip"><use href="#burst"/></svg><span class="outlined" style="font-size:44px">50:50</span><svg class="burst r"><use href="#burst"/></svg></div>
+          <div class="pu-name"><b>Fifty-Fifty</b><small>شيل اتنين غلط</small></div>
+        </div>
+        <div class="pu-card blue">
+          <div class="pu-art"><span class="pu-bub"><svg class="ic"><use href="#users"/></svg></span></div>
+          <div class="pu-name"><b>Ask a Friend</b><small>اسأل صاحبك</small></div>
+        </div>
+        <div class="pu-card red">
+          <div class="pu-art"><span class="pu-bub"><svg class="ic"><use href="#bars"/></svg></span></div>
+          <div class="pu-name"><b>Room Vote</b><small>رأي الأوضة</small></div>
+        </div>
+      </div>
+    </div>
+  </aside>
 </div></div>
-<p class="cap">09 · Ladder: player in the seat (tap a choice, try 50:50)</p>
+<p class="cap">09 · Ladder: player in the seat (pull Power Up, try 50:50)</p>
 </section>
 
 <!-- ================= 9a. Ladder: host reveals ================= -->
@@ -1868,7 +1892,7 @@
     });
   });
 
-  // Ladder player: tap a choice to pick it; 50:50 hides two wrong answers once.
+  // Ladder player: tap a choice to pick it; the 50:50 power-up (in the drawer) hides two wrong answers once.
   document.querySelectorAll('.ml-play').forEach(function (screen) {
     var list = screen.querySelector('.choices');
     var choices = list.querySelectorAll('.choice');
@@ -1882,6 +1906,7 @@
       var keep = wrong.find(function (c) { return c.classList.contains('pick'); }) || wrong[wrong.length - 1];
       wrong.filter(function (c) { return c !== keep; }).forEach(function (c) { c.classList.add('gone'); c.classList.remove('pick'); });
       this.classList.add('used');
+      screen.classList.remove('pu-open');   // close the drawer so the player sees the two answers left
     });
   });
 
