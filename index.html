@@ -130,6 +130,17 @@
     display: grid; place-items: center; font-size: 25px; font-weight: 800; padding-top: 4px;
     box-shadow: 0 2px 4px rgba(150, 100, 40, .18);
   }
+  /* Wager line above the points ("هتخش بكام؟؟") */
+  .points { padding-top: 10px; padding-bottom: 16px; row-gap: 10px; }
+  .points span { height: 40px; }
+  .sp.slim + .answer { margin-top: 12px; }
+  .wg-ttl {
+    grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 4px; direction: rtl;
+    font-size: 22px; font-weight: 800; line-height: 1; height: 30px;
+  }
+  .wg-ttl b { padding-top: 5px; }
+  .wg-ttl .burst { width: 22px; height: 22px; }
+  .wg-ttl.solo { margin: 14px 0 8px; }
   .power {
     position: absolute; right: -8px; top: 392px; width: 46px; height: 168px; border-radius: 23px;
     background: linear-gradient(90deg, #fbe3bd, #f6d39c); border: 2.5px solid var(--navy); z-index: 3;
@@ -882,7 +893,7 @@
     </div>
     <div class="sp slim" data-ad></div>
     <div class="answer"><span class="caret"></span>Answer Here...</div>
-    <div class="card points"><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span></div>
+    <div class="card points"><p class="wg-ttl"><svg class="burst r flip"><use href="#burst"/></svg><b>هتخش بكام؟؟</b><svg class="burst r"><use href="#burst"/></svg></p><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span></div>
   </div>
   <div class="submit"><svg class="burst y flip"><use href="#burst"/></svg><span class="btn-blue">إرسال الإجابة</span><svg class="burst y"><use href="#burst"/></svg></div>
   <div class="pu-dim"></div>
@@ -1357,7 +1368,7 @@
       <span class="chip"><svg class="ic"><use href="#coins"/></svg>رصيدك 2,400</span>
       <span class="chip time"><svg class="ic"><use href="#clock"/></svg>0:12</span>
     </div>
-    <div class="flabel">Your bid</div>
+    <p class="wg-ttl solo"><svg class="burst r flip"><use href="#burst"/></svg><b>المزاد مفتوح… هتدفع كام؟</b><svg class="burst r"><use href="#burst"/></svg></p>
     <div class="card picker">
       <div class="band"></div>
       <div class="wheel"><span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span></div>
